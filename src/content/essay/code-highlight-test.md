@@ -5,7 +5,6 @@ date: 2026-01-05
 tags: ["代码", "测试"]
 draft: false
 ---
-<<<<<<< HEAD
 <cloudinary-picture
   src="assets/images/Gulfstream-G800"
   alt="TODO: describe this image"
@@ -16,8 +15,6 @@ draft: false
   picture-class="responsive-picture"
 />
 
-=======
->>>>>>> main
 
 本文测试主题对各种编程语言的代码高亮支持。
 
