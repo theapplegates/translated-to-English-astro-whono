@@ -1,3 +1,5 @@
+The English README is good, but I wanted the whole site in English. It makes it easier to understand. The site has a lot of options and those are easier to understand for me, who only can read/write in English. Any errors I will try to fix.
+
 # astro-whono
 
 [中文](README.md) | [English](README.en.md)
