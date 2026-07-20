@@ -1,5 +1,5 @@
 /* Admin Content Editor Outline
-   承载 essay 编辑器右侧目录面板、tab 与列表行；面板作为布局列参与 grid，不作为 overlay。
+   Holds essay right-hand outline panel of the editor,tab and list rows; the panel participates as a layout column in grid, does not act as overlay.
 */
 
 .admin-editor-outline-panel {

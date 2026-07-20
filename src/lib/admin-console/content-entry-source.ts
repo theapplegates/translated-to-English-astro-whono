@@ -154,12 +154,12 @@ const parseFrontmatterRecord = (frontmatterText: string | null): Record<string, 
 const normalizeEntryId = (entryId: string): string => {
   const normalized = entryId.trim().replace(/\\/g, '/');
   if (!normalized || normalized.startsWith('/') || normalized.includes('//')) {
-    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId：${entryId}`);
+    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId: ${entryId}`);
   }
 
   const segments = normalized.split('/');
   if (segments.some((segment) => !segment || segment === '.' || segment === '..')) {
-    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId：${entryId}`);
+    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId: ${entryId}`);
   }
 
   return normalized;
@@ -175,7 +175,7 @@ export const getAdminContentEntrySourcePathCandidates = (
     if (normalizedEntryId !== fixedPage.entryId) {
       throw new AdminContentEntryResolutionError(
         'invalid-entry-id',
-        `${collection} Only supports fixed source files：${fixedPage.sourcePath}`
+        `${collection} Only supports fixed source files: ${fixedPage.sourcePath}`
       );
     }
     return [toAdminContentAbsoluteProjectPath(fixedPage.sourcePath)];
@@ -200,14 +200,14 @@ export const resolveAdminContentEntrySourcePath = (
     if (resolved) return resolved;
     throw new AdminContentEntryResolutionError(
       'source-not-found',
-      `${collection} Fixed source file not existing：${fixedPage.sourcePath}`
+      `${collection} Fixed source file not existing: ${fixedPage.sourcePath}`
     );
   }
 
   if (!resolved) {
     throw new AdminContentEntryResolutionError(
       'source-not-found',
-      `not found content source file：${collection}/${normalizedEntryId}`
+      `not found content source file: ${collection}/${normalizedEntryId}`
     );
   }
 
@@ -231,7 +231,7 @@ export const resolveAdminContentEntryLegacySourcePath = (
   if (!resolved) {
     throw new AdminContentEntryResolutionError(
       'source-not-found',
-      `not found content source file：${collection}/${normalizedEntryId}`
+      `not found content source file: ${collection}/${normalizedEntryId}`
     );
   }
 
@@ -247,7 +247,7 @@ export const resolveAdminContentEntryIdFromSourcePath = (
   if (relative.startsWith('../') || relative === '..' || path.isAbsolute(relative)) {
     throw new AdminContentEntryResolutionError(
       'invalid-entry-id',
-      `content The source file is not there ${collection} Under the collection directory：${toAdminContentRelativeProjectPath(absoluteFilePath)}`
+      `content The source file is not there ${collection} Under the collection directory: ${toAdminContentRelativeProjectPath(absoluteFilePath)}`
     );
   }
   if (relative.endsWith('/index.md')) {
@@ -274,7 +274,7 @@ export const listAdminCollectionSourceFiles = async (
         await access(filePath);
         files.push(filePath);
       } catch {
-        // Fixed page source remaining empty if it does not exist manifest。
+        // Fixed page source remaining empty if it does not exist manifest.
       }
     }
     return files;
@@ -314,7 +314,7 @@ export const loadAdminContentSourceState = async (
   entryId: string
 ): Promise<AdminContentSourceState> => {
   const sourcePath = resolveAdminContentEntrySourcePath(collection, entryId);
-  // Calculate based on actual source file path entryId，avoid making public id Used as disk file name。
+  // Calculate based on actual source file path entryId, avoid making public id Used as disk file name.
   const sourceEntryId = resolveAdminContentEntryIdFromSourcePath(collection, sourcePath);
   const publicEntryId = resolveDefaultPublicEntryId(sourceEntryId);
   const sourceText = await readFile(sourcePath, 'utf8');

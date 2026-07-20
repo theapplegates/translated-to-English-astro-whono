@@ -80,7 +80,7 @@ const buildChecksHref = (category: AdminChecksFilterValue): string => {
                 </div>
 
                 <div class="admin-checks-toolbar__filters-wrap">
-                  <span class="admin-checks-toolbar__separator" aria-hidden="true">｜</span>
+                  <span class="admin-checks-toolbar__separator" aria-hidden="true">|</span>
 
                   <nav class="admin-checks-toolbar__filters" aria-label="Check category filter">
                     <a
@@ -134,7 +134,7 @@ const buildChecksHref = (category: AdminChecksFilterValue): string => {
               <p class="admin-checks-toolbar__body">
                 {
                   checksDevState.checks.totalIssueCount > 0
-                    ? `Currently found ${checksDevState.checks.totalIssueCount} questions，distributed in ${checksDevState.checks.blockedCategoryCount} categories，involving ${checksDevState.checks.affectedPathCount} files。`
+                    ? `Currently found ${checksDevState.checks.totalIssueCount} questions, distributed in ${checksDevState.checks.blockedCategoryCount} categories, involving ${checksDevState.checks.affectedPathCount} files.`
                     : 'No problems found within the current inspection scope'
                 }
               </p>
@@ -142,7 +142,7 @@ const buildChecksHref = (category: AdminChecksFilterValue): string => {
             </div>
 
             <p class="admin-checks-toolbar__hint">
-              注：It is still recommended to execute before submitting <code>npm run verify</code>。
+              Note: It is still recommended to execute before submitting <code>npm run verify</code>.
             </p>
           </header>
 
@@ -255,7 +255,7 @@ const buildChecksHref = (category: AdminChecksFilterValue): string => {
         </section>
       ) : (
         <AdminReadonlyNotice>
-          If you need to run background diagnostics，Please run it locally <code translate="no">npm run dev</code>；Terminal inspection is still required before release.。
+          If you need to run background diagnostics, Please run it locally <code translate="no">npm run dev</code>;Terminal inspection is still required before release..
         </AdminReadonlyNotice>
       )
     }

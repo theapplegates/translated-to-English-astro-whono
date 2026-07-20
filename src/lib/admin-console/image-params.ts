@@ -101,37 +101,37 @@ export const ADMIN_IMAGE_DIRECTORY_OPTIONS = [
   {
     value: '',
     label: 'All resources',
-    description: 'Check out the local images available on the site。'
+    description: 'Check out the local images available on the site.'
   },
   {
     value: 'public/author',
     label: 'Avatar resources',
-    description: 'View author avatar and default avatar image。'
+    description: 'View author avatar and default avatar image.'
   },
   {
     value: 'public/bits',
     label: 'Whispers with pictures',
-    description: 'Check out the commonly used public images of Xuyu。'
+    description: 'Check out the commonly used public images of Xuyu.'
   },
   {
     value: 'public/images',
     label: 'Page illustration',
-    description: 'Check out the illustrations used on the homepage and regular pages。'
+    description: 'Check out the illustrations used on the homepage and regular pages.'
   },
   {
     value: 'public',
     label: 'Public pictures',
-    description: 'Check public All public images under。'
+    description: 'Check public All public images under.'
   },
   {
     value: 'src/assets',
     label: 'Site materials',
-    description: 'View local materials used in site themes and homepages。'
+    description: 'View local materials used in site themes and homepages.'
   },
   {
     value: 'src/content',
     label: 'Article attachment',
-    description: 'View image attachments in the same directory as the article or note。'
+    description: 'View image attachments in the same directory as the article or note.'
   }
 ] as const satisfies readonly AdminImageDirectoryOption[];
 
@@ -306,7 +306,7 @@ export const getAdminImageMetaRequest = (searchParams: URLSearchParams): AdminIm
 
   const rawField = (searchParams.get('field') ?? '').trim();
   if (!isAdminImageFieldContext(rawField)) {
-    throw new AdminImageError('field Illegal parameter，Unable to read image metadata');
+    throw new AdminImageError('field Illegal parameter, Unable to read image metadata');
   }
 
   return {

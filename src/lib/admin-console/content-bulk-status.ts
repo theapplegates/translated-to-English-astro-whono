@@ -33,7 +33,7 @@ const patchOneAdminContentDraftStatus = async (
   if (!isAdminContentCollectionKey(entry.collection)) {
     return createResult(entry, {
       status: 'skipped',
-      errors: [`Not supported content collection：${entry.collection}`],
+      errors: [`Not supported content collection: ${entry.collection}`],
       errorCodes: ['unsupported_collection']
     });
   }
@@ -41,7 +41,7 @@ const patchOneAdminContentDraftStatus = async (
   if (!isAdminContentDraftStatusCollectionKey(entry.collection)) {
     return createResult(entry, {
       status: 'skipped',
-      errors: [`current collection Batch publishing or draft modification is not currently supported.：${entry.collection}`],
+      errors: [`current collection Batch publishing or draft modification is not currently supported.: ${entry.collection}`],
       errorCodes: ['unsupported_collection']
     });
   }
@@ -53,7 +53,7 @@ const patchOneAdminContentDraftStatus = async (
       return createResult(entry, {
         status: 'failed',
         relativePath: state.relativePath,
-        errors: ['Content file path inconsistent with list detected，Please refresh and try again'],
+        errors: ['Content file path inconsistent with list detected, Please refresh and try again'],
         errorCodes: ['relative_path_mismatch']
       });
     }
@@ -103,8 +103,8 @@ const patchOneAdminContentDraftStatus = async (
       status: 'failed',
       errors: [
         error instanceof AdminContentBulkStatusConflictError
-          ? 'Content file detected externally updated，This entry has been skipped，Please refresh and try again'
-          : getErrorMessage(error, 'Failed to update content status，Please check local file permissions or logs')
+          ? 'Content file detected externally updated, This entry has been skipped, Please refresh and try again'
+          : getErrorMessage(error, 'Failed to update content status, Please check local file permissions or logs')
       ],
       errorCodes: [
         error instanceof AdminContentBulkStatusConflictError

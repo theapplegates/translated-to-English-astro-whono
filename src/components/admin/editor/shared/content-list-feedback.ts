@@ -14,7 +14,7 @@ export const storeContentListActionFeedback = (value: ContentListActionFeedback)
   try {
     window.sessionStorage.setItem(CONTENT_LIST_ACTION_FEEDBACK_STORAGE_KEY, value);
   } catch {
-    // Only used for success prompt after refresh；Failure to write does not affect completed saves/delete。
+    // Only used for success prompt after refresh;Failure to write does not affect completed saves/delete.
   }
 };
 

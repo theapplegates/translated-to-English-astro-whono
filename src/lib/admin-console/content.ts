@@ -248,7 +248,7 @@ export const getAdminContentFilterState = (searchParams: URLSearchParams): Admin
   const page = normalizePageNumber(searchParams.get('page'));
 
   if (collection === 'all') {
-    // All content only supports q meta information search；state、Label、years、Sorting and pagination are specific collection scope。
+    // All content only supports q meta information search;state, Label, years, Sorting and pagination are specific collection scope.
     return {
       collection,
       query,
@@ -263,7 +263,7 @@ export const getAdminContentFilterState = (searchParams: URLSearchParams): Admin
   }
 
   if (entryId) {
-    // entryId Is the source file precise positioning mode，Prioritize filtering and searching，avoid publicity slug Mixed with source file identity。
+    // entryId Is the source file precise positioning mode, Prioritize filtering and searching, avoid publicity slug Mixed with source file identity.
     return {
       collection,
       query: '',
@@ -432,7 +432,7 @@ export const getAdminContentConsolePageData = async (
   const filterState = getAdminContentFilterState(searchParams);
   const mode = getAdminContentConsoleMode(filterState);
   const visibleCollections = getAdminContentVisibleCollections(filterState.collection);
-  // Body derived text is more expensive，Only in single collection load on search；All content search only matches meta information。
+  // Body derived text is more expensive, Only in single collection load on search;All content search only matches meta information.
   const includeSearchText = mode === 'collection'
     && filterState.queryTokens.length > 0
     && filterState.collection !== 'all'
@@ -441,7 +441,7 @@ export const getAdminContentConsolePageData = async (
   const collectionCounts = getAdminContentSourceCounts(manifest);
   const items = await loadContentIndexItems(manifest, visibleCollections, { includeSearchText });
   const filteredItems = filterAdminContentItems(items, filterState);
-  // Pagination is done at the data layer，The page template only renders the truncated sections，Avoid view layers anymore slice。
+  // Pagination is done at the data layer, The page template only renders the truncated sections, Avoid view layers anymore slice.
   const shouldPaginate = filterState.collection !== 'all'
     && getAdminContentCollectionCapability(filterState.collection).pagination;
   const pageWindow = mode === 'collection' && shouldPaginate
@@ -495,7 +495,7 @@ export const getAdminContentPublicFallbackLabel = (item: AdminContentIndexItem):
 
   if (item.collection === 'bits') {
     const anchorId = getBitAnchorId(item.slug ?? item.id);
-    return `Expose positioning dependencies /bits/ Pagination and anchors（${anchorId}）`;
+    return `Expose positioning dependencies /bits/ Pagination and anchors(${anchorId})`;
   }
 
   return 'No public page link is generated for the current entry';

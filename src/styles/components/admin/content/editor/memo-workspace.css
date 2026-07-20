@@ -1,5 +1,5 @@
 /* Admin Content Editor Memo Workspace
-   memo 只承载固定单页工作台的局部提示，不改变 shared editor shell。
+   memo Holds only the local hints of the fixed single-page workspace; it does not change shared editor shell.
 */
 
 .admin-memo-editor.admin-editor-shell {

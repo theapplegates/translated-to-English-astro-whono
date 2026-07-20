@@ -35,7 +35,7 @@ const { homeIntroMaxLength } = Astro.props;
                 <AdminHelpTip
                   id="home-hero-image-src-tip"
                   label="Hero Image address description"
-                  text="support src/assets/**、public/** 或 https:// Picture bed link；Fallback to the built-in default image when the address is left blank。"
+                  text="support src/assets/**, public/** or https:// Picture bed link;Fallback to the built-in default image when the address is left blank."
                 />
               </span>
               <label class="admin-label__toggle" for="home-show-hero">
@@ -50,7 +50,7 @@ const { homeIntroMaxLength } = Astro.props;
                 type="text"
                 inputmode="url"
                 spellcheck="false"
-                placeholder="currently in use：src/assets/hero.png"
+                placeholder="currently in use: src/assets/hero.png"
                 aria-label="Hero Image address"
                 aria-describedby="home-hero-image-src-tip"
               />
@@ -68,7 +68,7 @@ const { homeIntroMaxLength } = Astro.props;
           <div class="admin-field">
             <span class="admin-label">
               <label class="admin-label__main" for="home-hero-image-alt">Hero Image description</label>
-              <span class="admin-label__hint">（Used for image alt text，Not displayed on the page）</span>
+              <span class="admin-label__hint">(Used for image alt text, Not displayed on the page)</span>
             </span>
             <input
               class="admin-field__control"
@@ -112,7 +112,7 @@ const { homeIntroMaxLength } = Astro.props;
       <div class="admin-label admin-label--split">
         <span class="admin-label__copy">
           <label class="admin-label__main" for="home-intro-more">Home page introduction supplementary copy</label>
-          <span class="admin-label__hint">（Fixed sentence pattern：Supplementary copy + Link + Optional“或” + Link）</span>
+          <span class="admin-label__hint">(Fixed sentence pattern: Supplementary copy + Link + Optional“or” + Link)</span>
         </span>
         <label class="admin-label__toggle" for="home-show-intro-more">
           <input id="home-show-intro-more" type="checkbox" checked />
@@ -154,7 +154,7 @@ const { homeIntroMaxLength } = Astro.props;
           class="admin-inline-builder__secondary"
           aria-disabled="true"
         >
-          <span class="admin-inline-builder__secondary-sep">或</span>
+          <span class="admin-inline-builder__secondary-sep">or</span>
           <select
             id="home-intro-more-link-secondary"
             class="admin-field__control admin-inline-builder__select"
@@ -170,7 +170,7 @@ const { homeIntroMaxLength } = Astro.props;
         </span>
       </div>
       <p class="admin-help">
-        Supplementary introduction preview：<code id="home-intro-more-preview" class="admin-help__preview-value">For more articles please visit Archive。</code>
+        Supplementary introduction preview: <code id="home-intro-more-preview" class="admin-help__preview-value">For more articles please visit Archive.</code>
       </p>
     </div>
   </div>

@@ -1,6 +1,6 @@
 /**
- * initialization Admin rail Public navigation overlay in mode。
- * Public pages will pass Admin body class 与 rail DOM Double judgment quick exit。
+ * initialization Admin rail Public navigation overlay in mode.
+ * Public pages will pass Admin body class and rail DOM Double judgment quick exit.
  */
 export function initPublicNavPopover() {
   if (!document.body.classList.contains('admin-page')) return;

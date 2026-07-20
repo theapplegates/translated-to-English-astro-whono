@@ -122,7 +122,7 @@ const createPersistEntries = (
     content: createJsonBody(groups[group])
   }));
 
-// DEV Background saving is a low-frequency operation，Serialized writes guarantee revision Verification and actual submission are in the same critical section。
+// DEV Background saving is a low-frequency operation, Serialized writes guarantee revision Verification and actual submission are in the same critical section.
 const withAdminSettingsWriteLock = createAdminWriteQueue();
 
 const validateIncomingSettingsSnapshot = (
@@ -221,7 +221,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm that the front-end request address has not been redirected and has been sent. JSON string',
+    emptyBodyError: 'The request body is empty, Please confirm that the front-end request address has not been redirected and has been sent. JSON string',
     parseTrimmedBody: true
   });
   if (!bodyResult.ok) {
@@ -279,7 +279,7 @@ export const POST: APIRoute = async ({ request, url }) => {
         JSON.stringify(
           {
             ok: false,
-            errors: ['Detected that configuration has been updated externally，Rejected to overwrite and sync latest configuration，Please confirm before saving'],
+            errors: ['Detected that configuration has been updated externally, Rejected to overwrite and sync latest configuration, Please confirm before saving'],
             results: createResults(),
             payload: latestEditableState.payload
           },
@@ -360,7 +360,7 @@ export const POST: APIRoute = async ({ request, url }) => {
           JSON.stringify(
             {
               ok: false,
-              errors: ['Configuration file has been written，but reread settings JSON fail，Please repair the damaged files first and then refresh the background.'],
+              errors: ['Configuration file has been written, but reread settings JSON fail, Please repair the damaged files first and then refresh the background.'],
               results
             },
             null,
@@ -388,7 +388,7 @@ export const POST: APIRoute = async ({ request, url }) => {
         JSON.stringify(
           {
             ok: false,
-            errors: ['Failed to write configuration file，Please check local file permissions or logs'],
+            errors: ['Failed to write configuration file, Please check local file permissions or logs'],
             results
           },
           null,

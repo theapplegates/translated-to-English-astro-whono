@@ -84,7 +84,7 @@ const bootstrapText =
                   Export current settings Snapshot
                 </p>
                 <p class="admin-data-panel__body admin-data-panel__body--subtle">
-                  Used for comparison before migration or keeping files before rollback。
+                  Used for comparison before migration or keeping files before rollback.
                 </p>
                 <div class="admin-data-panel__actions">
                   <button
@@ -185,10 +185,10 @@ const bootstrapText =
               <div class="admin-data-panel__copy admin-data-panel__copy--import">
                 <h2 class="admin-data-panel__title">import settings Snapshot</h2>
                 <p class="admin-data-panel__body">
-                  Select or drag the exported JSON Snapshot。
+                  Select or drag the exported JSON Snapshot.
                 </p>
                 <p class="admin-data-panel__body admin-data-panel__body--subtle">
-                  Parse and verify first，implement dry-run，Write after confirmation。
+                  Parse and verify first, implement dry-run, Write after confirmation.
                 </p>
               </div>
 
@@ -240,7 +240,7 @@ const bootstrapText =
                     </p>
                   </div>
                   <p id="admin-data-preview-empty-body" class="admin-data-terminal__empty-body">
-                    choose JSON Snapshot and execute dry-run 后，Show preview results here
+                    choose JSON Snapshot and execute dry-run after, Show preview results here
                   </p>
                 </div>
 
@@ -252,7 +252,7 @@ const bootstrapText =
                         <AdminIcon name="scan" size={18} />
                       </span>
                       <p id="admin-data-preview-body" class="admin-data-terminal__section-body">
-                        dry-run After completion，will be displayed here settings Group。
+                        dry-run After completion, will be displayed here settings Group.
                       </p>
                     </div>
                     <p
@@ -275,7 +275,7 @@ const bootstrapText =
             <p class="admin-overview-card__eyebrow">Invalid Settings</p>
             <h2 class="admin-overview-card__title">settings JSON Not currently writable</h2>
             <p class="admin-overview-card__body">
-              Data Console Reuse Theme Console existing invalid-settings guard。current `src/data/settings/*.json` There is a structural problem，Export and import paused，Corresponding files need to be repaired first。
+              Data Console Reuse Theme Console existing invalid-settings guard.current `src/data/settings/*.json` There is a structural problem, Export and import paused, Corresponding files need to be repaired first.
             </p>
             <ul class="admin-overview-card__list">
               {editableState.errors.map((error) => <li>{error}</li>)}
@@ -284,7 +284,7 @@ const bootstrapText =
         </section>
       ) : (
         <AdminReadonlyNotice>
-          If you need to import or export settings Snapshot，Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance。
+          If you need to import or export settings Snapshot, Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance.
         </AdminReadonlyNotice>
       )
     }

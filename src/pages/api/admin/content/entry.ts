@@ -94,11 +94,11 @@ const extractWriteInput = (body: unknown): WriteInput => {
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentCollectionKey(rawCollection)) {
-    const message = `Not supported content collection：${rawCollection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
+    const message = `Not supported content collection: ${rawCollection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentEntryWriteCollectionKey(rawCollection)) {
-    const message = getAdminContentReadOnlyReason(rawCollection) ?? `current collection Writing disk is not supported yet：${rawCollection}`;
+    const message = getAdminContentReadOnlyReason(rawCollection) ?? `current collection Writing disk is not supported yet: ${rawCollection}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else {
@@ -182,7 +182,7 @@ const createRevisionConflictResponse = (
     JSON.stringify(
       {
         ok: false,
-        errors: ['Content file detected externally updated，Override denied，Please refresh the current entry before saving.'],
+        errors: ['Content file detected externally updated, Override denied, Please refresh the current entry before saving.'],
         payload
       },
       null,
@@ -206,13 +206,13 @@ export const GET: APIRoute = async ({ url }) => {
   if (!isAdminContentCollectionKey(collection)) {
     return createJsonErrorResponse(
       400,
-      [`Not supported content collection：${collection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`],
-      [{ path: 'collection', message: `Not supported content collection：${collection}` }]
+      [`Not supported content collection: ${collection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`],
+      [{ path: 'collection', message: `Not supported content collection: ${collection}` }]
     );
   }
 
   if (!isAdminContentEntryWriteCollectionKey(collection)) {
-    const message = getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet：${collection}`;
+    const message = getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet: ${collection}`;
     return createJsonErrorResponse(
       400,
       [message],
@@ -247,7 +247,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createJsonErrorResponse(bodyResult.status, [bodyResult.error]);
@@ -351,7 +351,7 @@ export const POST: APIRoute = async ({ request, url }) => {
         JSON.stringify(
           {
             ok: false,
-            errors: ['Failed to write content file，Please check local file permissions or logs'],
+            errors: ['Failed to write content file, Please check local file permissions or logs'],
             result
           },
           null,

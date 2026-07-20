@@ -359,10 +359,10 @@ export const getThemeSettingsFilePath = (group: ThemeSettingsFileGroup): string 
 export const getThemeSettingsRelativePath = (group: ThemeSettingsFileGroup): string => SETTINGS_RELATIVE_PATHS[group];
 
 const THEME_SETTINGS_INVALID_MESSAGE =
-  'detected settings JSON Configuration file is corrupted，Theme Console Reading has stopped and saving is prohibited，Please repair the corresponding files and try again';
+  'detected settings JSON Configuration file is corrupted, Theme Console Reading has stopped and saving is prohibited, Please repair the corresponding files and try again';
 
 const LEGACY_INTRO_LEAD =
-  'This is an open source writing theme and sample content library:Include Essay/essay、Notes/memo、Archive/archive 与 Whisper/bits，For usage and configuration, please see README 。';
+  'This is an open source writing theme and sample content library:Include Essay/essay, Notes/memo, Archive/archive and Whisper/bits, For usage and configuration, please see README .';
 const LEGACY_INTRO_MORE = 'For more articles please visit';
 const LEGACY_ESSAY_TITLE = 'Essay';
 const LEGACY_ARCHIVE_TITLE = 'Archive';
@@ -425,7 +425,7 @@ const cloneThemeSettingsReadDiagnostics = (
 
 const DEFAULT_SITE: SiteSettings = {
   title: 'Whono',
-  description: 'one Astro theme display station：lightweight、Maintainable、Reusable。',
+  description: 'one Astro theme display station: lightweight, Maintainable, Reusable.',
   defaultLocale: 'zh-CN',
   footer: {
     startYear: LEGACY_FOOTER_START_YEAR,
@@ -819,12 +819,12 @@ const collectThemeSettingsSchemaDiagnostics = (
     if (!mismatchPaths.length) continue;
 
     const summarizedPaths = mismatchPaths.slice(0, 6);
-    const suffix = mismatchPaths.length > summarizedPaths.length ? ' 等' : '';
+    const suffix = mismatchPaths.length > summarizedPaths.length ? ' etc.' : '';
     diagnostics.push(
       createThemeSettingsReadDiagnostic(
         group,
         'schema-mismatch',
-        `The following fields are silently patched on read：${summarizedPaths.join(', ')}${suffix}`
+        `The following fields are silently patched on read: ${summarizedPaths.join(', ')}${suffix}`
       )
     );
   }
@@ -1540,7 +1540,7 @@ export const getThemeSettings = (): ThemeSettingsResolved => {
     }
   };
 
-  // DEV Turn off module level caching，Avoid manual modification settings JSON Or continue reading the old value after cutting the branch。
+  // DEV Turn off module level caching, Avoid manual modification settings JSON Or continue reading the old value after cutting the branch.
   if (shouldCacheThemeSettings) {
     cachedSettings = resolved;
   }

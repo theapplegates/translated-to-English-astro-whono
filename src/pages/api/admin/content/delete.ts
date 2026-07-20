@@ -99,11 +99,11 @@ const extractDeleteInput = (body: unknown): DeleteInput => {
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentCollectionKey(rawCollection)) {
-    const message = `Not supported content collection：${rawCollection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
+    const message = `Not supported content collection: ${rawCollection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentDeletableCollectionKey(rawCollection)) {
-    const message = getAdminContentDeleteUnsupportedReason(rawCollection) ?? `current collection Deletion is not supported yet：${rawCollection}`;
+    const message = getAdminContentDeleteUnsupportedReason(rawCollection) ?? `current collection Deletion is not supported yet: ${rawCollection}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else {
@@ -157,7 +157,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createJsonErrorResponse(bodyResult.status, [bodyResult.error]);
@@ -202,7 +202,7 @@ export const POST: APIRoute = async ({ request, url }) => {
       if (errorResponse) return errorResponse;
 
       console.error('[astro-whono] Failed to delete admin content entry:', error);
-      return createJsonErrorResponse(500, ['Failed to delete content file，Please check local file permissions or logs']);
+      return createJsonErrorResponse(500, ['Failed to delete content file, Please check local file permissions or logs']);
     }
   });
 };

@@ -57,7 +57,7 @@ export const getAdminContentSourceDownloadName = (
 ): string => {
   const sourceFileName = path.basename(sourcePath);
   const parsed = path.parse(sourceFileName);
-  // Directory entries are used on disk index.md；When downloading, name it according to the last paragraph of the entry.，memo Single page retention memo.md。
+  // Directory entries are used on disk index.md;When downloading, name it according to the last paragraph of the entry., memo Single page retention memo.md.
   return parsed.name.toLowerCase() === 'index'
     ? `${getEntryDownloadStem(collection, entryId)}${parsed.ext.toLowerCase()}`
     : sourceFileName;
@@ -69,7 +69,7 @@ export const createAdminContentSourceDownloadHeaders = (
 ): HeadersInit => ({
   'content-type': contentType,
   'cache-control': 'no-store',
-  // filename as ASCII reveal all the details；The real file name is kept in filename*。
+  // filename as ASCII reveal all the details;The real file name is kept in filename*.
   'content-disposition': `attachment; filename="${toAsciiHeaderFileName(fileName)}"; filename*=UTF-8''${encodeContentDispositionFileName(fileName)}`
 });
 

@@ -237,7 +237,7 @@ export const readAdminContentEntryEditorPayload = async (
   if (!getAdminContentCollectionCapability(collection).entryWritable) {
     throw new AdminContentEntryResolutionError(
       'invalid-entry-id',
-      getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet：${collection}`
+      getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet: ${collection}`
     );
   }
 

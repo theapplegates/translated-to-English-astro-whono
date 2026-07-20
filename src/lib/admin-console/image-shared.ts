@@ -910,7 +910,7 @@ const readWebpSize = (buffer: Buffer): { width: number; height: number } | null 
 export const readAdminLocalImageInspectionMeta = async (assetPath: string): Promise<AdminImageInspectionMeta> => {
   const absolutePath = toAbsoluteAssetPath(assetPath);
   if (!existsSync(absolutePath)) {
-    throw new AdminImageError(`Image file does not exist：${assetPath}`, 404);
+    throw new AdminImageError(`Image file does not exist: ${assetPath}`, 404);
   }
 
   const cacheKey = getAdminImageCacheKey('inspection-meta', assetPath);
@@ -965,7 +965,7 @@ const readLocalImageMeta = async (target: LocalImageTarget): Promise<AdminImageM
 const resolveFieldImageTarget = (field: AdminImageFieldContext, rawValue: string): FieldImageTarget => {
   const value = rawValue.trim();
   if (!value) {
-    throw new AdminImageError('Image value is empty，Unable to read metadata');
+    throw new AdminImageError('Image value is empty, Unable to read metadata');
   }
 
   if (field === 'bits.images') {
@@ -991,7 +991,7 @@ const resolveFieldImageTarget = (field: AdminImageFieldContext, rawValue: string
   if (field === 'page.bits.defaultAuthor.avatar') {
     const normalized = normalizeBitsAvatarPath(value);
     if (normalized === undefined || !normalized) {
-      throw new AdminImageError('Bits The default avatar only allows relative image paths（For example author/avatar.webp）');
+      throw new AdminImageError('Bits The default avatar only allows relative image paths(For example author/avatar.webp)');
     }
 
     return {
@@ -1007,7 +1007,7 @@ const resolveFieldImageTarget = (field: AdminImageFieldContext, rawValue: string
 
   const normalized = normalizeHeroImageSrc(value);
   if (!normalized) {
-    throw new AdminImageError('Hero Pictures only allowed src/assets/**、public path or https:// remote URL');
+    throw new AdminImageError('Hero Pictures only allowed src/assets/**, public path or https:// remote URL');
   }
 
   if (normalized.startsWith('https://')) return { kind: 'remote', url: normalized };
@@ -1040,7 +1040,7 @@ const resolveLocalTargetFromPath = (assetPath: string): LocalImageTarget => {
     || normalizedPath.includes('#')
     || !IMAGE_LOCAL_EXT_RE.test(normalizedPath)
   ) {
-    throw new AdminImageError('The image path must be public/**、src/assets/** 或 src/content/** The relative image path of the canonical warehouse under');
+    throw new AdminImageError('The image path must be public/**, src/assets/** or src/content/** The relative image path of the canonical warehouse under');
   }
 
   const canonicalPath = path.posix.normalize(normalizedPath);
@@ -1072,7 +1072,7 @@ const resolveLocalTargetFromPath = (assetPath: string): LocalImageTarget => {
     };
   }
 
-  throw new AdminImageError('The image path must be public/**、src/assets/** 或 src/content/** The relative image path of the canonical warehouse under');
+  throw new AdminImageError('The image path must be public/**, src/assets/** or src/content/** The relative image path of the canonical warehouse under');
 };
 
 export const getAdminImageMeta = async (input: AdminImageMetaInput): Promise<AdminImageMetaResult> => {
@@ -1083,11 +1083,11 @@ export const getAdminImageMeta = async (input: AdminImageMetaInput): Promise<Adm
 
   const rawValue = 'value' in input && typeof input.value === 'string' ? input.value.trim() : '';
   if (!('field' in input) || !input.field) {
-    throw new AdminImageError('Lack field 或 path，Unable to read image metadata');
+    throw new AdminImageError('Lack field or path, Unable to read image metadata');
   }
 
   if (!rawValue) {
-    throw new AdminImageError('Image value missing，Unable to read metadata');
+    throw new AdminImageError('Image value missing, Unable to read metadata');
   }
 
   const fieldTarget = resolveFieldImageTarget(input.field, rawValue);

@@ -16,7 +16,7 @@ draft: false
 />
 
 
-This article tests the topic’s code highlighting support for various programming languages.。
+This article tests the topic’s code highlighting support for various programming languages..
 
 ## TypeScript
 
@@ -110,4 +110,4 @@ site:
       url: https://github.com/johndoe
 ```
 
-Use code highlighting Shiki，support 100+ programming language。
+Use code highlighting Shiki, support 100+ programming language.

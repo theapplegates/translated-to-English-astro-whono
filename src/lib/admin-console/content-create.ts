@@ -74,12 +74,12 @@ const normalizeCreateEntryId = (entryId: string): string => {
     ? withoutExtension.slice(0, -'/index'.length)
     : withoutExtension;
   if (!normalized || normalized.startsWith('/') || normalized.includes('//')) {
-    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId：${entryId}`);
+    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId: ${entryId}`);
   }
 
   const segments = normalized.split('/');
   if (segments.some((segment) => !segment || segment === '.' || segment === '..')) {
-    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId：${entryId}`);
+    throw new AdminContentEntryResolutionError('invalid-entry-id', `Not supported content entryId: ${entryId}`);
   }
 
   return normalized;
@@ -230,7 +230,7 @@ const parseBitsCreateDate = (
 };
 
 const assertUnsupportedCreateCollection = (collection: never): never => {
-  throw new AdminContentEntryResolutionError('invalid-entry-id', `current collection Not yet added：${String(collection)}`);
+  throw new AdminContentEntryResolutionError('invalid-entry-id', `current collection Not yet added: ${String(collection)}`);
 };
 
 const buildEssayContentCreatePlan = async (
@@ -241,7 +241,7 @@ const buildEssayContentCreatePlan = async (
   const sourcePathCandidates = getAdminContentEntrySourcePathCandidates(collection, entryId);
   const [sourcePath] = sourcePathCandidates;
   if (!sourcePath) {
-    throw new AdminContentEntryResolutionError('source-not-found', `not found content Source file candidate：${collection}/${entryId}`);
+    throw new AdminContentEntryResolutionError('source-not-found', `not found content Source file candidate: ${collection}/${entryId}`);
   }
   const relativePath = toAdminContentRelativeProjectPath(sourcePath);
   const publicEntryId = contentSourceEntryIdToPublicEntryId(entryId) || entryId;
@@ -288,7 +288,7 @@ const buildEssayContentCreatePlan = async (
       relativePath,
       sourceText: '',
       editHref: getAdminContentEntryEditHref(collection, entryId),
-      issues: [createIssue('entryId', `Source file already exists：${toAdminContentRelativeProjectPath(existingSourcePath)}`)]
+      issues: [createIssue('entryId', `Source file already exists: ${toAdminContentRelativeProjectPath(existingSourcePath)}`)]
     };
   }
 
@@ -358,7 +358,7 @@ const buildBitsContentCreatePlan = async (
   const sourcePathCandidates = getAdminContentEntrySourcePathCandidates(collection, entryId);
   const [sourcePath] = sourcePathCandidates;
   if (!sourcePath) {
-    throw new AdminContentEntryResolutionError('source-not-found', `not found content Source file candidate：${collection}/${entryId}`);
+    throw new AdminContentEntryResolutionError('source-not-found', `not found content Source file candidate: ${collection}/${entryId}`);
   }
   const relativePath = toAdminContentRelativeProjectPath(sourcePath);
   const publicEntryId = contentSourceEntryIdToPublicEntryId(entryId) || entryId;
@@ -376,7 +376,7 @@ const buildBitsContentCreatePlan = async (
       relativePath,
       sourceText: '',
       editHref,
-      issues: [createIssue('entryId', `Source file already exists：${toAdminContentRelativeProjectPath(existingSourcePath)}`)]
+      issues: [createIssue('entryId', `Source file already exists: ${toAdminContentRelativeProjectPath(existingSourcePath)}`)]
     };
   }
 

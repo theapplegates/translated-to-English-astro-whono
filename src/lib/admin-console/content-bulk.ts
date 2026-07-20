@@ -151,7 +151,7 @@ export const readAdminContentBulkEntriesInput = (
   }
 
   if (entries.length > ADMIN_CONTENT_BULK_ENTRY_LIMIT) {
-    const message = `Bulk entries cannot exceed ${ADMIN_CONTENT_BULK_ENTRY_LIMIT} 条`;
+    const message = `Bulk entries cannot exceed ${ADMIN_CONTENT_BULK_ENTRY_LIMIT} entries`;
     return {
       ok: false,
       errors: [message],

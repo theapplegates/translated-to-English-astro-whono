@@ -39,7 +39,7 @@ if (!root) {
   const controlState = queryAdminDataControls();
   if (!controlState.ok) {
     reportAdminDataSetupError(controlState.controls, {
-      message: 'The page is missing necessary controls，Client script has stopped initializing。Please refresh the page，Or check out Templates and Controls id Is it still consistent?。',
+      message: 'The page is missing necessary controls, Client script has stopped initializing.Please refresh the page, Or check out Templates and Controls id Is it still consistent?.',
       details: controlState.missing
     });
   } else {
@@ -49,7 +49,7 @@ if (!root) {
 
     if (!bootstrap) {
       console.error('[admin-data] bootstrap Invalid data');
-      ui.showBootstrapError('The current page could not be completed bootstrap initialization，Please refresh the page or restart the development server and try again。');
+      ui.showBootstrapError('The current page could not be completed bootstrap initialization, Please refresh the page or restart the development server and try again.');
     } else {
       let currentRevision = bootstrap.revision;
       let currentBundle: AdminSettingsExportBundle | null = null;
@@ -135,8 +135,8 @@ if (!root) {
           state: 'loading',
           title: isDryRun ? 'Executing dry-run check' : 'Writing settings',
           body: isDryRun
-            ? 'Comparing current settings with imported snapshots，A summary of the differences will be generated here upon completion。'
-            : 'Writing along existing transaction link settings，After completion, the results will be filled back here.。'
+            ? 'Comparing current settings with imported snapshots, A summary of the differences will be generated here upon completion.'
+            : 'Writing along existing transaction link settings, After completion, the results will be filled back here..'
         });
       };
 
@@ -152,11 +152,11 @@ if (!root) {
           hasChanges
             ? {
                 state: 'diff',
-                note: 'Will be verified again before confirming writing revision，Avoid overwriting external modifications。'
+                note: 'Will be verified again before confirming writing revision, Avoid overwriting external modifications.'
               }
             : {
                 state: 'clean',
-                body: 'Currently imported snapshot and local settings consistent，No need to write disk。'
+                body: 'Currently imported snapshot and local settings consistent, No need to write disk.'
               }
         );
         ui.setStatus(hasChanges ? 'ok' : 'ready', 'dry-run Finish');
@@ -169,7 +169,7 @@ if (!root) {
         ui.renderPreview(results, {
           state: 'applied',
           body: '✅ Write successfully',
-          note: 'Before continuing to import other snapshots，Please re-execute dry-run。'
+          note: 'Before continuing to import other snapshots, Please re-execute dry-run.'
         });
         ui.setStatus('ok', 'Writing completed');
       };
@@ -190,7 +190,7 @@ if (!root) {
         ui.showPreviewEmpty({
           state: 'loading',
           title: 'Parsing import snapshot',
-          body: `Reading ${file.name} and verify manifest structure。`
+          body: `Reading ${file.name} and verify manifest structure.`
         });
         ui.setStatus('loading', 'Parsing', { announce: false });
 
@@ -206,7 +206,7 @@ if (!root) {
               errors: parsed.errors,
               errorTitle: 'Import file does not comply with settings export protocol',
               previewTitle: 'Import file parsing failed',
-              previewBody: 'The current file does not match settings export protocol。Please confirm schemaVersion、includedScopes 与 JSON Retry after structure。'
+              previewBody: 'The current file does not match settings export protocol.Please confirm schemaVersion, includedScopes and JSON Retry after structure.'
             });
             return;
           }
@@ -216,16 +216,16 @@ if (!root) {
           ui.showPreviewEmpty({
             state: 'ready',
             title: 'Snapshot is ready',
-            body: `${file.name}\nCompleted manifest parse，Executable dry-run`
+            body: `${file.name}\nCompleted manifest parse, Executable dry-run`
           });
           ui.setStatus('ready', 'Snapshot resolved');
         } catch {
           showImportFailure({
             status: 'error',
             statusText: 'JSON invalid',
-            errors: ['The selected file is not legal JSON，or the encoding content is corrupted'],
+            errors: ['The selected file is not legal JSON, or the encoding content is corrupted'],
             previewTitle: 'The imported file is not legal JSON',
-            previewBody: 'The selected file is not legal JSON，or the encoding content is corrupted。Please select export snapshot again。'
+            previewBody: 'The selected file is not legal JSON, or the encoding content is corrupted.Please select export snapshot again.'
           });
         } finally {
           syncActionState();
@@ -276,15 +276,15 @@ if (!root) {
               statusText: isDryRun ? 'dry-run failed' : 'Write failed',
               errors: payloadErrors.length > 0
                 ? payloadErrors
-                : [isDryRun ? 'dry-run Verification failed，Please check the imported file and current configuration status' : 'write settings fail，Please check the response and console log'],
+                : [isDryRun ? 'dry-run Verification failed, Please check the imported file and current configuration status' : 'write settings fail, Please check the response and console log'],
               errorTitle: isRevisionConflict ? 'External update detected' : 'Import not completed',
               previewState: isRevisionConflict ? 'warn' : 'error',
               previewTitle: isRevisionConflict ? 'External update detected' : isDryRun ? 'dry-run failed' : 'Write failed',
               previewBody: isRevisionConflict
-                ? 'This import has been stopped，Avoid silently overwriting external modifications。Please re-execute dry-run，and in the latest revision Confirm the result on。'
+                ? 'This import has been stopped, Avoid silently overwriting external modifications.Please re-execute dry-run, and in the latest revision Confirm the result on.'
                 : isDryRun
-                  ? 'No submittable change previews are currently generated，Please correct the error list and execute again dry-run。'
-                  : 'This write is not completed，Please deal with the error list first，Resubmit the configuration snapshot。'
+                  ? 'No submittable change previews are currently generated, Please correct the error list and execute again dry-run.'
+                  : 'This write is not completed, Please deal with the error list first, Resubmit the configuration snapshot.'
             });
             return;
           }
@@ -299,11 +299,11 @@ if (!root) {
           showImportFailure({
             status: 'error',
             statusText: isDryRun ? 'dry-run Request failed' : 'Write request failed',
-            errors: [isDryRun ? 'dry-run Request failed，Please try again later' : 'Write request failed，Please try again later'],
+            errors: [isDryRun ? 'dry-run Request failed, Please try again later' : 'Write request failed, Please try again later'],
             previewTitle: isDryRun ? 'dry-run Request failed' : 'Write request failed',
             previewBody: isDryRun
-              ? 'No response has been received from the server yet.，Please check the status of the development server and execute again. dry-run。'
-              : 'The writing result has not yet been confirmed，Please check the development server status and resubmit.。'
+              ? 'No response has been received from the server yet., Please check the status of the development server and execute again. dry-run.'
+              : 'The writing result has not yet been confirmed, Please check the development server status and resubmit..'
           });
         } finally {
           activeAction = null;
@@ -333,7 +333,7 @@ if (!root) {
             ui.setErrors(
               getPayloadErrors(payload).length > 0
                 ? getPayloadErrors(payload)
-                : ['current settings Status cannot be exported，Please fix the local configuration first and try again'],
+                : ['current settings Status cannot be exported, Please fix the local configuration first and try again'],
               {
                 title: response.status === 409 ? 'settings Not currently available for export' : 'Export failed'
               }
@@ -353,7 +353,7 @@ if (!root) {
           ui.setStatus('ok', 'Snapshot exported');
         } catch {
           ui.setStatus('error', 'Export request failed');
-          ui.setErrors(['Export request failed，Please check the development server status and try again']);
+          ui.setErrors(['Export request failed, Please check the development server status and try again']);
         } finally {
           busy = false;
           syncActionState();

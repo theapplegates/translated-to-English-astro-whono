@@ -25,7 +25,7 @@ const setReaderDisabled = (disabled: boolean) => {
   readerBtn.setAttribute('aria-pressed', 'false');
   readerBtn.setAttribute('aria-disabled', disabled ? 'true' : 'false');
   if (disabled) {
-    setControlLabel(readerBtn, 'reading mode（Articles only/Note page available）');
+    setControlLabel(readerBtn, 'reading mode(Articles only/Note page available)');
     readerBtn.tabIndex = -1;
   } else {
     setControlLabel(readerBtn, 'reading mode');

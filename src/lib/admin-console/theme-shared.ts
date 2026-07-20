@@ -33,7 +33,7 @@ export const ADMIN_HERO_PRESET_SET: ReadonlySet<HeroPresetId> = new Set(ADMIN_HE
 export const ADMIN_HERO_IMAGE_ALT_DEFAULT = 'Whono theme preview';
 export const ADMIN_HERO_IMAGE_ALT_MAX_LENGTH = 120;
 
-export const ADMIN_ARTICLE_META_DATE_LABEL_DEFAULT = 'Posted in：';
+export const ADMIN_ARTICLE_META_DATE_LABEL_DEFAULT = 'Posted in: ';
 export const ADMIN_ARTICLE_META_DATE_LABEL_MAX_LENGTH = 20;
 
 export const ADMIN_SIDEBAR_DIVIDER_VARIANTS = [
@@ -135,7 +135,7 @@ export const ADMIN_NAV_ORNAMENT_DEFAULT = '·';
 export const ADMIN_NAV_ORNAMENT_MAX_LENGTH = 4;
 export const ADMIN_FOOTER_START_YEAR_MIN = 1900;
 export const ADMIN_FOOTER_COPYRIGHT_MAX_LENGTH = 120;
-export const ADMIN_OVERVIEW_HIDDEN_MESSAGE_DEFAULT = 'The author has not published this page yet。';
+export const ADMIN_OVERVIEW_HIDDEN_MESSAGE_DEFAULT = 'The author has not published this page yet.';
 export const ADMIN_OVERVIEW_HIDDEN_MESSAGE_MAX_LENGTH = 120;
 
 export const ADMIN_LOCALE_RE = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
@@ -636,7 +636,7 @@ export const validateAdminThemeSettings = (
   if (!settings.site.defaultLocale) {
     pushIssue('site.defaultLocale', 'Default language cannot be empty');
   } else if (!ADMIN_LOCALE_RE.test(settings.site.defaultLocale)) {
-    pushIssue('site.defaultLocale', 'Default language format is invalid（Example：zh-CN）');
+    pushIssue('site.defaultLocale', 'Default language format is invalid(Example: zh-CN)');
   }
 
   if (!Number.isInteger(settings.site.footer?.startYear)) {
@@ -691,7 +691,7 @@ export const validateAdminThemeSettings = (
     settings.site.socialLinks?.x &&
     !isAdminAllowedHttpsUrl(settings.site.socialLinks.x, ADMIN_X_HOSTS)
   ) {
-    pushIssue('site.socialLinks.x', 'X / Twitter Links are only allowed https://x.com/... 或 https://twitter.com/... ');
+    pushIssue('site.socialLinks.x', 'X / Twitter Links are only allowed https://x.com/... or https://twitter.com/... ');
   }
   if (
     settings.site.socialLinks?.email &&
@@ -737,25 +737,25 @@ export const validateAdminThemeSettings = (
       return;
     }
     if (orderIssue === 'duplicate') {
-      pushIssue(`site.socialLinks.presetOrder.${id}`, `Social link position sorting cannot be repeated：${presetOrder[id]}`);
+      pushIssue(`site.socialLinks.presetOrder.${id}`, `Social link position sorting cannot be repeated: ${presetOrder[id]}`);
     }
   });
 
   if (customLinks.length > ADMIN_SOCIAL_CUSTOM_LIMIT) {
-    pushIssue('site.socialLinks.custom', `Custom links can only be added at most ${ADMIN_SOCIAL_CUSTOM_LIMIT} 条`);
+    pushIssue('site.socialLinks.custom', `Custom links can only be added at most ${ADMIN_SOCIAL_CUSTOM_LIMIT} entries`);
   }
 
   const seenCustomIds = new Set<string>();
   customLinks.forEach((item, index) => {
     const basePath = `site.socialLinks.custom[${index}]`;
     if (!item.id) {
-      pushIssue(`${basePath}.id`, `Custom link #${index + 1} 的 ID cannot be empty`);
+      pushIssue(`${basePath}.id`, `Custom link #${index + 1}  ID cannot be empty`);
     } else {
       if (item.id.includes('\n') || item.id.includes('\r')) {
-        pushIssue(`${basePath}.id`, `Custom link #${index + 1} 的 ID Only single line of text allowed`);
+        pushIssue(`${basePath}.id`, `Custom link #${index + 1}  ID Only single line of text allowed`);
       }
       if (seenCustomIds.has(item.id)) {
-        pushIssue(`${basePath}.id`, `Custom link ID repeat：${item.id}`);
+        pushIssue(`${basePath}.id`, `Custom link ID repeat: ${item.id}`);
       }
       seenCustomIds.add(item.id);
     }
@@ -779,10 +779,10 @@ export const validateAdminThemeSettings = (
         `Custom link #${index + 1} The position order of must be ${ADMIN_SOCIAL_ORDER_MIN}-${ADMIN_SOCIAL_ORDER_MAX} integer`
       );
     } else if (orderIssue === 'duplicate') {
-      pushIssue(`${basePath}.order`, `Social link position sorting cannot be repeated：${item.order}`);
+      pushIssue(`${basePath}.order`, `Social link position sorting cannot be repeated: ${item.order}`);
     }
     if (typeof item.visible !== 'boolean') {
-      pushIssue(`${basePath}.visible`, `Custom link #${index + 1} 的 visible Must be a boolean value`);
+      pushIssue(`${basePath}.visible`, `Custom link #${index + 1}  visible Must be a boolean value`);
     }
   });
 
@@ -820,11 +820,11 @@ export const validateAdminThemeSettings = (
     const seenHomeIntroLinks = new Set<HomeIntroLinkKey>();
     settings.home.introMoreLinks.forEach((linkKey, index) => {
       if (!isAdminHomeIntroLinkKey(linkKey)) {
-        pushIssue(`home.introMoreLinks[${index}]`, `Home page introduction supplementary link #${index + 1} illegal：${String(linkKey)}`);
+        pushIssue(`home.introMoreLinks[${index}]`, `Home page introduction supplementary link #${index + 1} illegal: ${String(linkKey)}`);
         return;
       }
       if (seenHomeIntroLinks.has(linkKey)) {
-        pushIssue(`home.introMoreLinks[${index}]`, `The supplementary link to the homepage introduction cannot be repeated.：${linkKey}`);
+        pushIssue(`home.introMoreLinks[${index}]`, `The supplementary link to the homepage introduction cannot be repeated.: ${linkKey}`);
         return;
       }
       seenHomeIntroLinks.add(linkKey);
@@ -841,12 +841,12 @@ export const validateAdminThemeSettings = (
   ) {
     pushIssue(
       'home.heroImageSrc',
-      'Hero Image addresses are only allowed src/assets/**、public/**（或 / Starting path）as well as https:// Image address'
+      'Hero Image addresses are only allowed src/assets/**, public/**(or / Starting path)as well as https:// Image address'
     );
   } else if (settings.home.heroImageSrc) {
     const localFilePath = getAdminHeroImageLocalFilePath(settings.home.heroImageSrc);
     if (localFilePath && options.localFileExists && !options.localFileExists(localFilePath)) {
-      pushIssue('home.heroImageSrc', `Hero The local file pointed to by the image does not exist：${localFilePath}`);
+      pushIssue('home.heroImageSrc', `Hero The local file pointed to by the image does not exist: ${localFilePath}`);
     }
   }
 
@@ -912,7 +912,7 @@ export const validateAdminThemeSettings = (
     if (normalizeAdminBitsAvatarPath(settings.page.bits.defaultAuthor.avatar) === undefined) {
       pushIssue(
         'page.bits.defaultAuthor.avatar',
-        'Bits The default avatar only allows relative image paths（For example author/avatar.webp），Don't bring it public/、Don't take / beginning，Also don't include URL、..、?、#'
+        'The bits default avatar only allows a relative image path (e.g. author/avatar.webp). Do not include public/, do not start with /, and do not use a URL, .., ?, or #'
       );
     }
   }
@@ -989,9 +989,9 @@ export const validateAdminThemeSettings = (
     const navId = ADMIN_NAV_IDS.includes(item.id) ? item.id : null;
     const basePath = navId ? `shell.nav.${navId}` : `shell.nav[${index}]`;
     if (!navId) {
-      pushIssue(`${basePath}.id`, `Illegal navigation items exist ID：${item.id}`);
+      pushIssue(`${basePath}.id`, `Illegal navigation items exist ID: ${item.id}`);
     } else if (seenIds.has(navId)) {
-      pushIssue(`${basePath}.id`, `Navigation items ID repeat：${navId}`);
+      pushIssue(`${basePath}.id`, `Navigation items ID repeat: ${navId}`);
     }
     if (navId) seenIds.add(navId);
 
@@ -1014,10 +1014,10 @@ export const validateAdminThemeSettings = (
     ) {
       pushIssue(`${basePath}.order`, `Navigation items ${item.id} The position order of must be ${ADMIN_NAV_ORDER_MIN}-${ADMIN_NAV_ORDER_MAX} integer`);
     } else if (navId && navOrderIssues.get(navId) === 'duplicate') {
-      pushIssue(`${basePath}.order`, `Position sorting cannot be repeated：${item.order}`);
+      pushIssue(`${basePath}.order`, `Position sorting cannot be repeated: ${item.order}`);
     }
     if (typeof item.visible !== 'boolean') {
-      pushIssue(`${basePath}.visible`, `Navigation items ${item.id} 的 visible Must be a boolean value`);
+      pushIssue(`${basePath}.visible`, `Navigation items ${item.id}  visible Must be a boolean value`);
     }
   });
 
@@ -1301,7 +1301,7 @@ export const createAdminThemeSettingsCanonicalMismatchIssues = (
   const {
     mode = 'exact',
     pathPrefix = '',
-    messagePrefix = 'Configuration values ​​change after normalization，Please fix the original input first'
+    messagePrefix = 'Configuration values ​​change after normalization, Please fix the original input first'
   } = options;
   const mismatchPaths = getAdminThemeSettingsMismatchPaths(actual, expected, mode);
   return mismatchPaths.map((path) => {
@@ -1310,7 +1310,7 @@ export const createAdminThemeSettingsCanonicalMismatchIssues = (
       : pathPrefix
         ? appendPathSegment(pathPrefix, path)
         : path;
-    return createValidationIssue(normalizedPath, `${messagePrefix}：${normalizedPath}`);
+    return createValidationIssue(normalizedPath, `${messagePrefix}: ${normalizedPath}`);
   });
 };
 

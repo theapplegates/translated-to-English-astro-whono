@@ -125,7 +125,7 @@ export const createAdminThemeController = ({
     stageExternalUpdate(latestPayload);
     uiState.setErrorBanner({
       title,
-      items: ['Your changes remain on the page；To synchronize the latest configuration，Please click「Reset changes」。']
+      items: ['Your changes remain on the page;To synchronize the latest configuration, Please click"Reset changes".']
     });
     uiState.setDirty(true);
     uiState.setStatus('warn', status, { announce: false });
@@ -136,7 +136,7 @@ export const createAdminThemeController = ({
   const setInvalidSettingsErrorBanner = (invalidState: ThemeSettingsEditableErrorState): void => {
     uiState.setErrorBanner({
       title: 'Switched to read-only protection',
-      message: 'detected settings Configuration file is corrupted。Please repair the file first，Click again“Retest”Or refresh the current page。',
+      message: 'detected settings Configuration file is corrupted.Please repair the file first, Click again“Retest”Or refresh the current page.',
       items: createInvalidSettingsBannerItems(invalidState),
       retryable: true
     });
@@ -218,7 +218,7 @@ export const createAdminThemeController = ({
     uiState.setStatus('error', 'Initialization failed');
     uiState.setErrors([message], {
       title: 'Failed to read configuration',
-      message: 'failed to read Theme Console Current configuration。Please click“Retest”Try again。',
+      message: 'failed to read Theme Console Current configuration.Please click“Retest”Try again.',
       retryable: true
     });
     revealErrorState();
@@ -267,7 +267,7 @@ export const createAdminThemeController = ({
       if (hasInitialSettings()) {
         uiState.setStatus('warn', 'Interface read failed');
       } else if (!uiState.isConsoleLocked()) {
-        setInitialLoadError(error instanceof Error ? error.message : 'Initialization request failed，Please try again later');
+        setInitialLoadError(error instanceof Error ? error.message : 'Initialization request failed, Please try again later');
       }
       console.warn(error);
     }
@@ -290,7 +290,7 @@ export const createAdminThemeController = ({
     try {
       if (!currentRevision) {
         clearInvalidFields();
-        uiState.setErrors(['The current configuration is missing revision，Please synchronize the latest configuration first and then check'], {
+        uiState.setErrors(['The current configuration is missing revision, Please synchronize the latest configuration first and then check'], {
           title: 'Configuration needs to be resynchronized before checking'
         });
         uiState.setStatus('error', 'Check configuration failed', { announce: false });
@@ -315,12 +315,12 @@ export const createAdminThemeController = ({
 
         if (
           response.status === 409
-          && showExternalUpdateConflict(payload, 'External updates found while checking', 'External updates found while checking，Current draft is reserved')
+          && showExternalUpdateConflict(payload, 'External updates found while checking', 'External updates found while checking, Current draft is reserved')
         ) {
           return;
         }
 
-        uiState.setErrors(serverErrors.length ? serverErrors : ['Check configuration failed，Please try again later'], {
+        uiState.setErrors(serverErrors.length ? serverErrors : ['Check configuration failed, Please try again later'], {
           title: 'Check configuration failed'
         });
         uiState.setStatus('error', 'Check configuration failed', { announce: false });
@@ -335,7 +335,7 @@ export const createAdminThemeController = ({
     } catch (error) {
       console.error(error);
       clearInvalidFields();
-      uiState.setErrors(['Check configuration request failed，Please check local service logs'], { title: 'Check configuration failed' });
+      uiState.setErrors(['Check configuration request failed, Please check local service logs'], { title: 'Check configuration failed' });
       uiState.setStatus('error', 'Check configuration failed', { announce: false });
       revealErrorState();
     } finally {
@@ -386,7 +386,7 @@ export const createAdminThemeController = ({
     try {
       if (!currentRevision) {
         clearInvalidFields();
-        uiState.setErrors(['The current configuration is missing revision，Please synchronize the latest configuration before saving.'], { title: 'Configuration needs to be resynchronized before saving' });
+        uiState.setErrors(['The current configuration is missing revision, Please synchronize the latest configuration before saving.'], { title: 'Configuration needs to be resynchronized before saving' });
         uiState.setStatus('error', 'Save failed', { announce: false });
         revealErrorState();
         return;
@@ -407,12 +407,12 @@ export const createAdminThemeController = ({
         const serverErrors = getPayloadErrors(payload);
         if (
           response.status === 409
-          && showExternalUpdateConflict(payload, 'External update detected，Saving is paused', 'External update detected，Current draft is reserved')
+          && showExternalUpdateConflict(payload, 'External update detected, Saving is paused', 'External update detected, Current draft is reserved')
         ) {
           return;
         }
 
-        uiState.setErrors(serverErrors.length ? serverErrors : ['Save failed，Please try again later'], { title: 'Save failed' });
+        uiState.setErrors(serverErrors.length ? serverErrors : ['Save failed, Please try again later'], { title: 'Save failed' });
         if (response.status === 404) {
           uiState.setStatus('error', 'Unable to write', { announce: false });
         } else {
@@ -436,7 +436,7 @@ export const createAdminThemeController = ({
     } catch (error) {
       console.error(error);
       clearInvalidFields();
-      uiState.setErrors(['Save request failed，Please check local service logs'], { title: 'Save request failed' });
+      uiState.setErrors(['Save request failed, Please check local service logs'], { title: 'Save request failed' });
       uiState.setStatus('error', 'Save failed', { announce: false });
       revealErrorState();
     } finally {

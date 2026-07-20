@@ -79,7 +79,7 @@ const adminUiPrefsScriptHref = isDevAdminPage
   <head>
     <script is:inline>
       (() => {
-        // 与 src/scripts/sidebar-theme.ts Keep the same theme preference contract，Avoid first screen and runtime state drift。
+        // and src/scripts/sidebar-theme.ts Keep the same theme preference contract, Avoid first screen and runtime state drift.
         const themeKey = 'theme';
         const modeKey = 'theme-mode';
         let storedMode = null;

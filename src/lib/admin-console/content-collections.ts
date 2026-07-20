@@ -99,7 +99,7 @@ export const ADMIN_CONTENT_COLLECTION_CAPABILITIES = {
     imageUpload: true,
     imagePicker: false,
     readonlyReason: null,
-    deleteUnsupportedReason: 'memo It is a fixed single page content，Not supported from Content Console delete'
+    deleteUnsupportedReason: 'memo It is a fixed single page content, Not supported from Content Console delete'
   },
   about: {
     collection: 'about',
@@ -124,7 +124,7 @@ export const ADMIN_CONTENT_COLLECTION_CAPABILITIES = {
     imageUpload: false,
     imagePicker: false,
     readonlyReason: null,
-    deleteUnsupportedReason: 'about It is a fixed single page content，Not supported from Content Console delete'
+    deleteUnsupportedReason: 'about It is a fixed single page content, Not supported from Content Console delete'
   }
 } as const satisfies Record<AdminContentCollectionKey, AdminContentCollectionCapability>;
 

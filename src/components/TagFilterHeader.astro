@@ -92,7 +92,7 @@ const tagTriggerText = currentTag ? 'Switch tabs' : '#Label';
         <input
           data-entry-search-input
           type="search"
-          placeholder="search：title / summary / Label"
+          placeholder="search: title / summary / Label"
           autocomplete="off"
           aria-label={searchAriaLabel}
         />
@@ -122,7 +122,7 @@ const tagTriggerText = currentTag ? 'Switch tabs' : '#Label';
           <div class="entry-tags-dialog__title-wrap">
             <div class="entry-tags-dialog__title-row">
               <h2 class="entry-tags-dialog__title" id={dialogTitleId} tabindex="-1">{pageTitleText}Label</h2>
-              <p class="entry-tags-dialog__hint">共 {tagOptions.length} 个</p>
+              <p class="entry-tags-dialog__hint"> {tagOptions.length} </p>
             </div>
           </div>
           <div class="entry-tags-dialog__actions">
@@ -151,11 +151,11 @@ const tagTriggerText = currentTag ? 'Switch tabs' : '#Label';
         <div class="entry-tags-fallback__head">
           <h2 class="entry-tags-fallback__title" id={`${dialogTitleId}-fallback`}>{pageTitleText}Label</h2>
           <p class="entry-tags-fallback__hint">
-            Currently None JavaScript model，You can directly click on the following tags to enter the static results page。
+            Currently None JavaScript model, You can directly click on the following tags to enter the static results page.
           </p>
         </div>
         <div class="entry-tags-dialog__toolbar">
-          <span class="entry-tags-dialog__summary">共 {tagOptions.length} tags，Direct access to results page。</span>
+          <span class="entry-tags-dialog__summary"> {tagOptions.length} tags, Direct access to results page.</span>
           {currentTag ? (
             <a class="entry-tags-dialog__clear" href={currentTag.clearHref}>View all</a>
           ) : (

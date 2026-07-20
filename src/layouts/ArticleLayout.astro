@@ -45,7 +45,7 @@ const hasMath = containsMarkdownMath(entry.body ?? '');
 const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
 const updatedAt = entry.data.updatedAt ?? null;
 const displayDate = updatedAt ?? entry.data.date;
-const displayDateLabel = updatedAt ? 'updated on：' : (articleMetaSettings.dateLabel ?? '');
+const displayDateLabel = updatedAt ? 'updated on: ' : (articleMetaSettings.dateLabel ?? '');
 const articleReadingStats = articleMetaSettings.showWordCount || articleMetaSettings.showReadingTime
   ? (() => {
       const wordCount = derivedText.plainText.replace(/\s+/g, '').length;
@@ -115,12 +115,12 @@ const shouldShowMetaLine = articleMetaSettings.showDate
         ) : null}
         {articleMetaSettings.showWordCount ? (
           <span class="meta-line__item meta-line__item--desktop-meta">
-            共 {numberFormatter.format(articleReadingStats.wordCount)} 字
+             {numberFormatter.format(articleReadingStats.wordCount)} words
           </span>
         ) : null}
         {articleMetaSettings.showReadingTime ? (
           <span class="meta-line__item meta-line__item--desktop-meta">
-            约 {numberFormatter.format(articleReadingStats.readingMinutes)} minute
+            about {numberFormatter.format(articleReadingStats.readingMinutes)} minutes
           </span>
         ) : null}
       </div>

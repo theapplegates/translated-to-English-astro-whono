@@ -32,19 +32,19 @@ const {
 } = getThemeSettings();
 
 const pageTitleText = page.essay.title || 'Essay';
-const pageTitleParts = [pageTitleText, currentPage > 1 ? `第 ${currentPage} 页` : null].filter(Boolean);
+const pageTitleParts = [pageTitleText, currentPage > 1 ? `Page ${currentPage}` : null].filter(Boolean);
 const pageTitle = pageTitleParts.join(' · ');
 const subtitleText = joinPageSubtitleText(
   page.essay.subtitle,
-  `共 ${resultCount} 篇`,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
+  `${resultCount} articles`,
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
 );
 const pageDescription = joinPageSubtitleText(
-  `${pageTitleText}list`,
+  `${pageTitleText} list`,
   page.essay.subtitle,
-  `共 ${resultCount} 篇`,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
-) ?? `${pageTitleText}list`;
+  `${resultCount} articles`,
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
+) ?? `${pageTitleText} list`;
 const fallbackListId = 'essay-tag-list';
 ---
 

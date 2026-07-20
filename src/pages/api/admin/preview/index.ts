@@ -80,11 +80,11 @@ const extractPreviewInput = (body: unknown): PreviewInput => {
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentCollectionKey(rawCollection)) {
-    const message = `Not supported content collection：${rawCollection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
+    const message = `Not supported content collection: ${rawCollection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentWriteCollectionKey(rawCollection)) {
-    const message = getAdminContentReadOnlyReason(rawCollection) ?? `current collection Preview is not supported yet：${rawCollection}`;
+    const message = getAdminContentReadOnlyReason(rawCollection) ?? `current collection Preview is not supported yet: ${rawCollection}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else {
@@ -111,11 +111,11 @@ const extractPreviewInput = (body: unknown): PreviewInput => {
 
   if (rawCollection === 'about') {
     if (!entryId) {
-      const message = 'about Preview must provide fixed entryId：index';
+      const message = 'about Preview must provide fixed entryId: index';
       errors.push(message);
       issues.push({ path: 'entryId', message });
     } else if (entryId !== 'index') {
-      const message = 'about Preview only supports pinned entryId：index';
+      const message = 'about Preview only supports pinned entryId: index';
       errors.push(message);
       issues.push({ path: 'entryId', message });
     }
@@ -149,7 +149,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createJsonErrorResponse(bodyResult.status, [bodyResult.error]);
@@ -179,6 +179,6 @@ export const POST: APIRoute = async ({ request, url }) => {
     }
 
     console.error('[astro-whono] Failed to render admin content preview:', error);
-    return createJsonErrorResponse(500, ['Preview rendering failed，Check, please Markdown content or view local logs']);
+    return createJsonErrorResponse(500, ['Preview rendering failed, Check, please Markdown content or view local logs']);
   }
 };

@@ -351,7 +351,7 @@ export const formatAdminOverviewWordMetric = (wordCount: number): { value: strin
   if (wordCount <= WORD_COUNT_COMPACT_THRESHOLD) {
     return {
       value: String(wordCount),
-      suffix: '字'
+      suffix: 'words'
     };
   }
 

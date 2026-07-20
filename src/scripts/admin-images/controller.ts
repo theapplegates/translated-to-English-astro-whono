@@ -837,7 +837,7 @@ export const initAdminImagesConsole = () => {
     const copyValue = target.dataset.copyValue ?? '';
     const copyLabel = target.dataset.copyLabel?.trim() ?? 'content';
     if (!copyValue) {
-      setStatus('error', `${copyLabel}is empty，Unable to copy`);
+      setStatus('error', `${copyLabel}is empty, Unable to copy`);
       return;
     }
 
@@ -885,8 +885,8 @@ export const initAdminImagesConsole = () => {
       setStatus(
         'ok',
         resetToDefaultView
-          ? (currentTotalCount > 0 ? `Gallery refreshed，All resources have been returned（共 ${currentTotalCount} pictures）` : 'Gallery refreshed，All resources have been returned')
-          : (currentTotalCount > 0 ? `Gallery refreshed，Current total ${currentTotalCount} pictures` : 'Gallery refreshed')
+          ? (currentTotalCount > 0 ? `Gallery refreshed, All resources have been returned(total ${currentTotalCount} pictures)` : 'Gallery refreshed, All resources have been returned')
+          : (currentTotalCount > 0 ? `Gallery refreshed, Current total ${currentTotalCount} pictures` : 'Gallery refreshed')
       );
     }
   } else {

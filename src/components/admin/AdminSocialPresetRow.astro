@@ -18,7 +18,7 @@ interface Props {
 
 const { row } = Astro.props;
 const visibilityLabel = `hide ${row.label}`;
-const removeLabel = `${row.label} as a fixed item，Cannot be deleted`;
+const removeLabel = `${row.label} as a fixed item, Cannot be deleted`;
 ---
 
 <article class="admin-row admin-row--interactive admin-row--table admin-social-row admin-social-row--preset" data-social-preset-row data-social-preset-id={row.id}>

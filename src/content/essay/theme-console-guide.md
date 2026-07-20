@@ -1,66 +1,65 @@
 ---
 title: Theme Console Configuration Guide
-description: illustrate astro-whono local Theme Console Scope of application in development environment、Page grouping、Configuration placement and saving mechanism。
+description: A guide to the astro-whono local Theme Console — its scope in the development environment, page grouping, where configuration is stored, and how saving works.
 badge: guide
 date: 2026-04-26
 tags: [ "Theme Console", "guide"]
 draft: false
 ---
 
-astro-whono provide a local Theme Console，For centrally managing topic-level configuration in a development environment。
+astro-whono provides a local Theme Console for centrally managing theme-level configuration in a development environment.
 
-Theme Console The entrance is `/admin/theme/`。It mainly covers site information、sidebar、front page、Internal page copywriting，And some reading and code display options，Convenient for fork 或 clone Quickly adjust site theme settings later。
+The Theme Console lives at `/admin/theme/`. It mainly covers site info, the sidebar, the homepage, inner-page copy, and a few reading and code-display options, so you can quickly adjust site theme settings after forking or cloning.
 
-:::note[development environment]
-`/admin/theme/` Only available in development environment。When accessing the production environment，Show only local development tips，Does not provide writing capabilities。
+:::note[Development environment]
+`/admin/theme/` is only available in the development environment. In production it shows only a local-development notice and provides no editing.
 :::
 
 ## Local startup and entry
 
-When developing locally，The project can be started with the following command：
+When developing locally, start the project with:
 
 ```bash
 npm install
 npm run dev
 ```
 
-By default，The development server will run on `http://localhost:4321/`。Can be accessed directly after startup：
+By default the dev server runs at `http://localhost:4321/`. After it starts, open:
 
 ```text
 http://localhost:4321/admin/theme/
 ```
 
-If the development port is modified locally，please change `4321` Replace with actual port。
+If you changed the dev port, replace `4321` with your actual port.
 
-`/admin/` It's backstage Site Overview Entrance，Used to view site snapshots。Theme Console lie in `/admin/theme/`，Pay attention to distinguish these two entrances when using。
+`/admin/` is the backend Site Overview entry, used to view a site snapshot. The Theme Console lives at `/admin/theme/` — note the difference between these two entries.
 
 ## Development and production environments
 
-Theme Console Is a configuration tool for local maintainers，The performance under different environments is as follows:：
+The Theme Console is a configuration tool for local maintainers. Its behavior across environments:
 
-- development environment：`/admin/theme/` Can read and save theme configurations
-- production environment：`/admin/theme/` Keep only local development tips，Don't show writable forms
-- `/api/admin/settings/`：Only available in development environment，inaction publicity API use
+- Development environment: `/admin/theme/` can read and save theme configuration
+- Production environment: `/admin/theme/` keeps only a local-development notice and shows no editable forms
+- `/api/admin/settings/`: available only in the development environment; not a public API
 
-## Scope of application
+## Scope
 
-Theme Console Currently suitable for processing the following types of configurations：
+The Theme Console currently handles the following kinds of configuration:
 
-- site title、Default language、default SEO describe
+- Site title, default language, and default SEO description
 - Footer year and copyright copy
-- `/admin/` Overview Display on/off status copy to the outside world
-- Social links and their ordering
-- Sidebar site name、citation copy、Navigation order and visibility
-- Sidebar action icons（reading mode / RSS / theme switching / Site overview entrance）
-- front page Hero、Home page introduction and home page internal entrance
-- `/essay/`、`/archive/`、`/bits/`、`/memo/`、`/about/` main subtitle
-- Article meta information display options
-- code block line number
+- Whether the `/admin/` overview is shown to visitors, and the copy shown when off
+- Social links and their order
+- Sidebar site name, quote copy, navigation order, and visibility
+- Sidebar action icons (reading mode / RSS / theme switch / site overview entry)
+- Homepage hero, home intro, and the home intro's inner entries
+- Titles and subtitles for `/essay/`, `/archive/`, `/bits/`, `/memo/`, and `/about/`
+- Article meta display options
+- Code block line numbers
 
+## Configuration files
 
-## Configuration file
-
-The saved settings will be automatically written into groups. `src/data/settings/`：
+Saved settings are written, grouped, into `src/data/settings/`:
 
 ```text
 src/data/settings/
@@ -71,85 +70,82 @@ src/data/settings/
   ui.json
 ```
 
-> 若 `src/data/settings/*.json` Does not exist yet，first time in `/admin/theme/` Will be automatically generated when saving。
+> If `src/data/settings/*.json` does not exist yet, it is generated automatically the first time you save in `/admin/theme/`.
 
-Theme Console What is managed is the theme configuration in the warehouse，Relevant changes can still be approved Git Track and rollback。
+The Theme Console manages the theme configuration inside the repository, so changes can still be tracked and rolled back through Git.
 
-The reading order of topic configurations is fixed to：`src/data/settings/*.json` priority，Next read legacy Configuration，Finally use project defaults。Here's legacy Configuration mainly comes from `site.config.mjs` and default constants within the component。<br>
-That is to say，刚 clone You can use the default configuration first when working on the project；As long as Theme Console Saved once in，will generate a traceable settings JSON。
+Theme configuration is read in a fixed order: `src/data/settings/*.json` first, then legacy configuration, then project defaults. The "legacy configuration" here mainly comes from `site.config.mjs` and default constants inside components.<br>
+In other words, right after cloning you can use the default configuration; once you save in the Theme Console once, a trackable settings JSON is generated.
 
 ## Page grouping
 
-`/admin/theme/` Currently divided into five groups according to editing scenes。
+`/admin/theme/` is currently split into five groups by editing scene.
 
 ### Site
 
-`Site` Responsible for basic information at the site level：
+`Site` handles site-level basics:
 
-- site title
+- Site title
 - Default language
-- default SEO describe
+- Default SEO description
 - Footer year and copyright copy
-- `/admin/` Overview Whether to display externally，And the text displayed when closing
-- social links
+- Whether the `/admin/` overview is shown externally, and the copy shown when off
+- Social links
 
-> ![Site Group screenshots](./theme-console/theme-console-site.webp)
+> ![Site group screenshot](./theme-console/theme-console-site.webp)
 
 ### Sidebar
 
-`Sidebar` Responsible for shell and navigation related configuration：
+`Sidebar` handles shell and navigation configuration:
 
 - Sidebar site name
 - Sidebar quote copy
 - Sidebar divider style
-- Show and hide sidebar action icons（reading mode / RSS / theme switching / Site overview）
-- Navigation name、sort、Suffix characters and visible and hidden status
+- Show/hide sidebar action icons (reading mode / RSS / theme switch / site overview)
+- Navigation name, order, suffix characters, and visibility
 
-> ![Sidebar Group screenshots](./theme-console/theme-console-sidebar.webp)
+> ![Sidebar group screenshot](./theme-console/theme-console-sidebar.webp)
 
 ### Home
 
-`Home` Responsible for home page display related configuration：
+`Home` handles homepage display configuration:
 
-- Hero Image address and description
-- Hero Reveal
-- Home page introduction main copy
-- Home page introduction supplementary copy
-- Supplement the primary link and secondary link in the introduction
+- Hero image URL and description
+- Hero reveal
+- Home intro lead copy
+- Home intro supplementary copy
+- The primary and secondary links in the intro
 
-> ![Home Group screenshots](./theme-console/theme-console-home.webp)
+> ![Home group screenshot](./theme-console/theme-console-home.webp)
 
-The supplementary introduction on the home page still uses a fixed sentence pattern，The backend only opens copywriting and entrance selections，Try to keep the structure of the homepage as stable as possible。Current optional entrances include `archive`、`essay`、`bits`、`memo`、`about` 和 `tag`。
-
+The home intro supplementary copy uses a fixed sentence pattern; the backend only exposes copy and entry selection, to keep the homepage structure as stable as possible. The currently selectable entries are `archive`, `essay`, `bits`, `memo`, `about`, and `tag`.
 
 ### Inner Pages
 
-`Inner Pages` Responsible for unified copywriting and display strategies at the internal page level：
+`Inner Pages` handles unified copy and display strategy at the inner-page level:
 
-- `/essay/` Page main and subtitles
-- `/archive/` Page main and subtitles
-- `/bits/` Page main and subtitles
-- `/memo/` Page main and subtitles
-- `/about/` Page main and subtitles
-- Whether the article meta information displays the date、Label、word count、Reading time
-- `/bits/` Default author name and avatar
+- `/essay/` page title and subtitle
+- `/archive/` page title and subtitle
+- `/bits/` page title and subtitle
+- `/memo/` page title and subtitle
+- `/about/` page title and subtitle
+- Whether article meta shows date, tags, word count, and reading time
+- `/bits/` default author name and avatar
 
-> ![Inner Pages Group screenshots](./theme-console/theme-console-inner-pages.webp)
-
+> ![Inner Pages group screenshot](./theme-console/theme-console-inner-pages.webp)
 
 ### Code
 
-- Whether to display line numbers in code blocks
-
+- Whether to show line numbers in code blocks
 
 ## Save mechanism
 
-- Save button `site / shell / home / page / ui` group writeback，Do not directly modify the template source code
-- Most fields provide instant preview or clear page correspondence
-- Field verification will be performed before saving.
-- Version information will be attached when saving，Used to avoid silent overwriting caused by concurrent modifications
-- Write process includes rollback on failure，Avoid multi-file semi-success state
+- The save button writes back to the `site / shell / home / page / ui` groups; it does not modify template source code directly
+- Most fields offer instant preview or a clear page correspondence
+- Fields are validated before saving
+- Version info is attached on save, to avoid silent overwrites from concurrent edits
+- The write process rolls back on failure, avoiding a half-written multi-file state
 
 ---
 
-The above content covers Theme Console Currently commonly used configuration entries and saving mechanisms。If you find configuration abnormalities or saving problems when using，Submissions are welcome Issue。
+The above covers the Theme Console's commonly used configuration entries and save mechanism. If you run into configuration anomalies or save issues, please open an Issue.

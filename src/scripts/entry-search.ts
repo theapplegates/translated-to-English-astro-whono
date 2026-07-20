@@ -218,10 +218,10 @@ if (!root) {
 
   const getStatusPrefix = (query: string, totalMatches: number) => {
     if (query && activeTagLabel) {
-      return `Label #${activeTagLabel} The next hit ${totalMatches} 条`;
+      return `Label #${activeTagLabel} The next hit ${totalMatches} entries`;
     }
     if (query) {
-      return totalMatches === 0 ? 'No match found' : `hit together ${totalMatches} 条`;
+      return totalMatches === 0 ? 'No match found' : `hit together ${totalMatches} entries`;
     }
     return '';
   };
@@ -238,14 +238,14 @@ if (!root) {
       return;
     }
     if (visibleMatches === totalMatches) {
-      setStatus(query && !activeTagKey ? `hit ${totalMatches} 条` : prefix);
+      setStatus(query && !activeTagKey ? `hit ${totalMatches} entries` : prefix);
       return;
     }
     if (visibleMatches === 0) {
-      setStatus(`${prefix}（No results for the current page，You can turn the page to continue viewing）`);
+      setStatus(`${prefix}(No results for the current page, You can turn the page to continue viewing)`);
       return;
     }
-    setStatus(`${prefix}（Current page ${visibleMatches} 条，You can turn the page to see more）`);
+    setStatus(`${prefix}(Current page ${visibleMatches} entries,You can turn the page to see more)`);
   };
 
   const scheduleApplyFilter = (delay = FILTER_DEBOUNCE_MS) => {
@@ -265,7 +265,7 @@ if (!root) {
     setSearchOpen(true);
     showAllItems();
     syncSections(false);
-    setStatus('Index load failed，Search disabled');
+    setStatus('Index load failed, Search disabled');
   };
 
   const indexLoader = createJsonIndexLoader<IndexItem>({

@@ -181,7 +181,7 @@ export const validateEssayPublicSlug = async (
         'slug',
         frontmatter.slug
           ? 'essay.slug Must be lowercase kebab-case'
-          : 'The path of the current entry will be made public after it is flattened. slug illegal，Please set legal slug Or adjust the file path'
+          : 'The path of the current entry will be made public after it is flattened. slug illegal, Please set legal slug Or adjust the file path'
       )
     );
   }
@@ -190,7 +190,7 @@ export const validateEssayPublicSlug = async (
     issues.push(
       createIssue(
         'slug',
-        `public slug "${publicSlug}" 与 /archive 或 /essay reserved route conflict under，Please modify slug`
+        `public slug "${publicSlug}" and /archive or /essay reserved route conflict under, Please modify slug`
       )
     );
   }
@@ -206,7 +206,7 @@ export const validateEssayPublicSlug = async (
       issues.push(
         createIssue(
           'slug',
-          `public slug "${publicSlug}" Already used by other essay occupy：${collisionEntryId}`
+          `public slug "${publicSlug}" Already used by other essay occupy: ${collisionEntryId}`
         )
       );
       return issues;
@@ -215,7 +215,7 @@ export const validateEssayPublicSlug = async (
     issues.push(
       createIssue(
         'slug',
-        `Unable to complete essay.slug Uniqueness check：${error instanceof Error ? error.message : 'unknown error'}`
+        `Unable to complete essay.slug Uniqueness check: ${error instanceof Error ? error.message : 'unknown error'}`
       )
     );
   }

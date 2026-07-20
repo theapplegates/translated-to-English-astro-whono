@@ -128,9 +128,9 @@ const adminSidebarRoutes = ADMIN_ROUTES.map((route) => {
           <a
             class="icon-button admin-rail-route"
             href={href}
-            aria-label={`${route.sidebarLabel}：${route.description}`}
+            aria-label={`${route.sidebarLabel}: ${route.description}`}
             aria-current={isActive ? 'page' : undefined}
-            title={`${route.sidebarLabel}：${route.description}`}
+            title={`${route.sidebarLabel}: ${route.description}`}
           >
             <AdminIcon name={route.sidebarIcon} class="icon" />
           </a>

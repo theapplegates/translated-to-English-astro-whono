@@ -49,14 +49,14 @@ export const GET: APIRoute = async ({ url }) => {
   if (!isAdminContentCollectionKey(collection)) {
     return createJsonErrorResponse(
       400,
-      [`Not supported content collection：${collection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`]
+      [`Not supported content collection: ${collection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`]
     );
   }
 
   if (!isAdminContentExportableCollectionKey(collection)) {
     return createJsonErrorResponse(
       400,
-      [getAdminContentCollectionCapability(collection).readonlyReason ?? `current collection Export is not supported yet：${collection}`]
+      [getAdminContentCollectionCapability(collection).readonlyReason ?? `current collection Export is not supported yet: ${collection}`]
     );
   }
 

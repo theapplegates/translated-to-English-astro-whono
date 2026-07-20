@@ -95,7 +95,7 @@ const getImageFetchPriority = (prioritize: boolean) => (prioritize ? 'high' : un
               class={`bit-media-item${index === card.wideIndex ? ' bit-media-item--wide' : ''}${isMore ? ' bit-media-item--more' : ''}`}
               data-bit-image-button
               data-bit-image-index={index}
-              aria-label={isMore ? `View all pictures（共 ${card.imageItems.length} 张）` : `picture ${index + 1}`}
+              aria-label={isMore ? `View all pictures(total ${card.imageItems.length} images)` : `picture ${index + 1}`}
             >
               <img
                 src={image.src}
@@ -109,7 +109,7 @@ const getImageFetchPriority = (prioritize: boolean) => (prioritize ? 'high' : un
                 <>
                   <span class="bit-media-more" aria-hidden="true" data-bit-image-open-hidden={maxVisible}>
                     <span class="bit-media-more-short">+ {card.imageItems.length - maxVisible}</span>
-                    <span class="bit-media-more-full">View the rest{card.imageItems.length - maxVisible}张</span>
+                    <span class="bit-media-more-full">View the rest {card.imageItems.length - maxVisible}</span>
                   </span>
                 </>
               ) : null}

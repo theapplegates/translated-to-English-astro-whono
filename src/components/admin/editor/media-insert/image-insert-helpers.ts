@@ -72,7 +72,7 @@ export const createImageInsertText = (draft: ImageBlockDraft): ImageInsertText =
     return { text: createMarkdownImage(draft.alt, draft.src) };
   }
 
-  // Figure is writing Markdown source text control HTML；Must be done at spawn point HTML escape and press block insert。
+  // Figure is writing Markdown source text control HTML;Must be done at spawn point HTML escape and press block insert.
   return {
     text: createFigureImageBlock(draft),
     placement: 'block'

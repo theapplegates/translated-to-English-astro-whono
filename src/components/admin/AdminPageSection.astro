@@ -91,7 +91,7 @@ const {
         <AdminHelpTip
           id="page-memo-title-tip"
           label="/memo/ Page title description"
-          text="After filling in, overwrite the corresponding fields.，Leave blank to use src/content/memo/index.md。"
+          text="After filling in, overwrite the corresponding fields., Leave blank to use src/content/memo/index.md."
         />
       </span>
       <span class="admin-title-pair" role="group" aria-label="/memo/ Page main title and subtitle">
@@ -178,7 +178,7 @@ const {
   <div class="admin-subgroup">
     <p class="admin-subtitle">
       <span class="admin-subtitle__main">Article meta information</span>
-      <span class="admin-subtitle__hint">（word count/Duration only details page，Hide on mobile）</span>
+      <span class="admin-subtitle__hint">(word count/Duration only details page, Hide on mobile)</span>
     </p>
     <div class="admin-toggle-row-group admin-toggle-row-group--article-meta">
       <div class="admin-toggle-row admin-toggle-row--with-inline-field">
@@ -188,14 +188,14 @@ const {
         </label>
         <span class="admin-toggle-row__sep" aria-hidden="true">|</span>
         <label class="admin-inline-field" for="ui-article-meta-date-label">
-          <span class="admin-inline-field__label">prefix：</span>
+          <span class="admin-inline-field__label">prefix: </span>
           <input
             id="ui-article-meta-date-label"
             class="admin-inline-field__input"
             type="text"
             maxlength={ADMIN_ARTICLE_META_DATE_LABEL_MAX_LENGTH}
             autocomplete="off"
-            placeholder="Posted in："
+            placeholder="Posted in: "
           />
         </label>
       </div>
@@ -213,7 +213,7 @@ const {
       </label>
     </div>
     <p class="admin-help admin-help--article-meta-preview">
-      Preview：<code id="article-meta-preview-value" class="admin-help__preview-value">{'Posted in：2026-03-18 · #Astro\u00A0\u00A0#writing · 共 2,416 字 · 约 6 minute'}</code>
+      Preview: <code id="article-meta-preview-value" class="admin-help__preview-value">{'Posted in: 2026-03-18 · #Astro\u00A0\u00A0#writing · 2,416 words · about 6 minutes'}</code>
     </p>
   </div>
 
@@ -232,7 +232,7 @@ const {
         <div class="admin-field">
           <span class="admin-label">
             <label class="admin-label__main" for="page-bits-author-avatar">Default avatar</label>
-            <span class="admin-label__hint">（relative path）</span>
+            <span class="admin-label__hint">(relative path)</span>
           </span>
           <div class="admin-images-field-input">
             <input class="admin-field__control" id="page-bits-author-avatar" type="text" autocomplete="off" />

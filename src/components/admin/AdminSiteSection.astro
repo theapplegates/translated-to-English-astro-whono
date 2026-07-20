@@ -24,28 +24,28 @@ const { footerStartYearMin, footerStartYearMax, socialCustomLimit } = Astro.prop
     <label class="admin-field">
       <span class="admin-label">
         <span class="admin-label__main">site title</span>
-        <span class="admin-label__hint">（for browser title / RSS / share）</span>
+        <span class="admin-label__hint">(for browser title / RSS / share)</span>
       </span>
       <input class="admin-field__control" id="site-title" type="text" autocomplete="off" />
     </label>
     <label class="admin-field">
       <span class="admin-label">
         <span class="admin-label__main">site language</span>
-        <span class="admin-label__hint">（The default value is zh-CN）</span>
+        <span class="admin-label__hint">(The default value is zh-CN)</span>
       </span>
       <input class="admin-field__control" id="site-default-locale" type="text" autocomplete="off" />
     </label>
     <label class="admin-field admin-field--full">
       <span class="admin-label">
         <span class="admin-label__main">default SEO describe</span>
-        <span class="admin-label__hint">（Used to search results and share snippets）</span>
+        <span class="admin-label__hint">(Used to search results and share snippets)</span>
       </span>
       <textarea class="admin-field__control admin-field__control--singleline-textarea" id="site-description" rows="1"></textarea>
     </label>
     <label class="admin-field">
       <span class="admin-label">
         <span class="admin-label__main">footer year</span>
-        <span class="admin-label__hint">（The end year automatically picks up the current year）</span>
+        <span class="admin-label__hint">(The end year automatically picks up the current year)</span>
       </span>
       <span class="admin-year-range">
         <input
@@ -67,7 +67,7 @@ const { footerStartYearMin, footerStartYearMax, socialCustomLimit } = Astro.prop
           value={String(footerStartYearMax)}
           readonly
           tabindex="-1"
-          aria-label="current year（automatic）"
+          aria-label="current year(automatic)"
         />
         <label class="admin-year-range__toggle">
           <input id="site-footer-show-current-year" type="checkbox" checked />
@@ -83,16 +83,16 @@ const { footerStartYearMin, footerStartYearMax, socialCustomLimit } = Astro.prop
     </label>
     <div class="admin-field admin-field--full">
       <p id="site-footer-preview" class="admin-help">
-        Footer preview：<code id="site-footer-preview-value">© {footerStartYearMax} Whono · Theme Demo · by cxro</code>
+        Footer preview: <code id="site-footer-preview-value">© {footerStartYearMax} Whono · Theme Demo · by cxro</code>
       </p>
     </div>
     <div class="admin-field admin-field--full">
       <div class="admin-label admin-label--split">
         <span class="admin-label__copy">
           <label class="admin-label__main" for="site-admin-overview-hidden-message">
-            <code>/admin/</code> Overview public access（Not included）
+            <code>/admin/</code> Overview public access(Not included)
           </label>
-          <span class="admin-label__hint">（Effective after build；When public is closed，This page only displays the text below）</span>
+          <span class="admin-label__hint">(Effective after build;When public is closed, This page only displays the text below)</span>
         </span>
         <label class="admin-label__toggle" for="site-admin-overview-public-visible">
           <input id="site-admin-overview-public-visible" type="checkbox" checked />

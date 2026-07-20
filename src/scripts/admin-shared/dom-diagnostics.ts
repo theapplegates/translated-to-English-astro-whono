@@ -1,4 +1,4 @@
-export const ADMIN_DOM_SETUP_ERROR_STATUS = 'Initialization failed，Please check the console';
+export const ADMIN_DOM_SETUP_ERROR_STATUS = 'Initialization failed, Please check the console';
 
 type AdminDomControlMap<TControls> = {
   [Key in keyof TControls]: Element | null;
@@ -43,7 +43,7 @@ export const queryAdminDomControls = <TControls extends AdminDomControlMap<TCont
 
 export const reportAdminDomSetupError = ({
   prefix,
-  message = 'The page is missing necessary controls，Client script has stopped initializing。',
+  message = 'The page is missing necessary controls, Client script has stopped initializing.',
   missing,
   statusEl,
   statusLiveEl,

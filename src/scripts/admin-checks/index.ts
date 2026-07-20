@@ -56,7 +56,7 @@ const markRefreshPending = () => {
   try {
     window.sessionStorage.setItem(FEEDBACK_KEY, getCurrentFeedbackPath());
   } catch {
-    // sessionStorage When unavailable，Silence degrades to no completion feedback。
+    // sessionStorage When unavailable, Silence degrades to no completion feedback.
   }
 };
 

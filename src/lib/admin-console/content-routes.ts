@@ -48,7 +48,7 @@ export const getAdminContentEntryListHref = (
   collection: AdminContentCollectionKey,
   options: { entryId?: string | null } = {}
 ): string => {
-  // Use list positioning query Parameters carry source file identity，avoided and removed collection List route rebinding。
+  // Use list positioning query Parameters carry source file identity, avoided and removed collection List route rebinding.
   const params = new URLSearchParams({ collection });
   const entryId = options.entryId?.trim() ?? '';
   if (entryId) params.set('entryId', entryId);

@@ -73,10 +73,10 @@ If you need to write directly HTML（More precise control）：
 </div>
 ~~~
 
-illustrate：
-- The default icon is determined by the type，unnecessary `<span class="callout-icon">`。
-- Used to hide icons `data-icon="none"`，written in `.callout-title` 上。
-- Custom icons available `data-icon="✨"`（Optional）。
+Note:
+- The default icon is determined by the type; a `<span class="callout-icon">` is unnecessary.
+- Use `data-icon="none"` to hide the icon; write it on `.callout-title`.
+- Custom icons are supported via `data-icon="✨"` (optional).
 
 ### Syntactic sugar variant example（Callout）
 
@@ -114,7 +114,7 @@ Text content
 :::
 ~~~
 
-Only supports `note / tip / info / warning`；Unsupported type（如 `:::foo[...]`）Currently it will be downgraded to `note`。
+Only `note / tip / info / warning` are supported; unsupported types (e.g. `:::foo[...]`) are downgraded to `note`.
 
 ## list
 
@@ -225,7 +225,7 @@ this is a [external links](https://astro.build)，will open in a new tab。
   <figcaption class="figure-caption">Legend example：This is the caption for the image。</figcaption>
 </figure>
 
-**Case B：无 figcaption**
+**Case B: no figcaption**
 
 <figure class="figure">
   <img src="/images/archive/demo-archive-02.webp" alt="Example without legend" />
@@ -241,7 +241,7 @@ this is a [external links](https://astro.build)，will open in a new tab。
   <figcaption class="figure-caption">Legend example：picture Description of。</figcaption>
 </figure>
 
-> illustrate：under current style `img` 与 `picture` Visual consistency。`picture` Mainly used to prepare multiple images for the same picture“Alternate version”，The browser will automatically select the most appropriate one（Such as mobile phone thumbnail、Computer big picture，or give priority to WebP/AVIF）。When automatic version selection is not required，用 `img` Just fine。
+> Note: under the current styles, `img` and `picture` look consistent. `picture` is mainly used to provide multiple "alternate versions" of the same image, and the browser picks the most appropriate one (e.g. a phone thumbnail, a larger desktop image, or WebP/AVIF when supported). When automatic version selection is not needed, `img` is fine.
 
 ### Gallery
 
@@ -284,7 +284,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 
 ## Mixed typography
 
-This is a paragraph containing **Bold**、*italics*、`code` 和 [Link](/) mixed typesetting text。You can freely combine these elements within a paragraph，Create a rich reading experience。
+This is a paragraph mixing **bold**, *italics*, `code`, and a [link](/). You can freely combine these elements within a paragraph to create a rich reading experience.
 
 ---
 

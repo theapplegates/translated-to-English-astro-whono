@@ -243,9 +243,9 @@ const setStatus = (
 const formatResultsSummary = (count: number, year: number | null) => {
   const summary =
     count > MAX_VISIBLE_RESULTS
-      ? `turn up ${count} results，Before current display ${MAX_VISIBLE_RESULTS} 条`
+      ? `turn up ${count} results, Before current display ${MAX_VISIBLE_RESULTS} entries`
       : `turn up ${count} results`;
-  return year ? `${year} 年 · ${summary}` : summary;
+  return year ? `${year} · ${summary}` : summary;
 };
 
 const isResultsVisible = () => resultsRoot?.hasAttribute('hidden') === false;
@@ -323,7 +323,7 @@ const setActiveYearState = (year: number | null) => {
     const isMoreActive = isOverflowYear(year);
     yearMoreRoot.dataset.active = String(isMoreActive);
     yearMoreTrigger.classList.toggle('is-active', isMoreActive);
-    yearMoreTrigger.setAttribute('aria-label', isMoreActive ? `Open more year filters，current ${year} 年` : 'Open more year filters');
+    yearMoreTrigger.setAttribute('aria-label', isMoreActive ? `Open more year filters, current ${year}` : 'Open more year filters');
   }
   if (yearMoreLabel) {
     yearMoreLabel.textContent = isOverflowYear(year) ? String(year) : 'More';
@@ -396,9 +396,9 @@ const showBrowse = () => {
 
 const getEmptyResultsText = (query: string, year: number | null) => {
   if (year !== null && query) {
-    return 'There is no matching content for this year，Try changing the keyword or year。';
+    return 'There is no matching content for this year, Try changing the keyword or year.';
   }
-  return 'No relevant content found，Try changing the keywords。';
+  return 'No relevant content found, Try changing the keywords.';
 };
 
 const renderResults = (matchedItems: IndexItem[]) => {
@@ -418,7 +418,7 @@ const renderResults = (matchedItems: IndexItem[]) => {
       const queryTerms = tokenizeSearchQuery(query);
       const snippet = getDisplaySnippet(item, queryTerms);
       const dateLabel = item.dateLabel?.trim() ?? '';
-      const pageHint = item.page && item.page !== currentBitsPage ? `From the ${item.page} 页` : '';
+      const pageHint = item.page && item.page !== currentBitsPage ? `From page ${item.page}` : '';
       const { placeText, normalTags } = getDisplayTags(item.tags ?? []);
       const place = placeText
         ? `<span class="bit-search-result__tag bit-search-result__tag--place">📍 ${highlightText(placeText, queryTerms)}</span>`
@@ -533,7 +533,7 @@ const setDegradedMode = () => {
   }
   yearSelectWrap?.setAttribute('data-disabled', 'true');
   closeMoreMenu();
-  setStatus('Index load failed，Search disabled');
+  setStatus('Index load failed, Search disabled');
   showBrowse();
 };
 

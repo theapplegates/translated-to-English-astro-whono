@@ -1,142 +1,142 @@
 ---
 title: Content Console User Guide
-description: illustrate astro-whono local Content Console null、list search、Ability to edit, preview, download and delete。
+description: A guide to the astro-whono local Content Console — browsing, searching, editing, previewing, downloading, and deleting content.
 badge: guide
 date: 2026-06-13
 tags: [ "Content Console", "guide" ]
 draft: false
 ---
 
-astro-whono provide a local Content Console，Writing content for managing sites in a development environment。
+astro-whono ships with a local Content Console for managing site content in a development environment.
 
-Content Console The entrance is `/admin/content/`。it covers essay、Whisper、Notes、Browsing about four categories of content、Find、Edit and Preview，and supports creating new drafts、Download source files and delete，Convenient for handwriting when not directly frontmatter Maintain content in case of。
+The Content Console lives at `/admin/content/`. It covers four content categories — essay, Whisper, Notes, and About — letting you browse, find, edit, and preview them, and supports creating drafts, downloading source files, and deleting. It is handy when you'd rather not hand-edit frontmatter directly.
 
-:::note[development environment]
-`/admin/content/` and its editing page are only operable in the development environment。Only local development prompts are displayed when accessing the production environment.，Content data and editor not loading；`/api/admin/content/*` Only serve local backend，inaction publicity API。
+:::note[Development environment]
+`/admin/content/` and its editor pages only work in the development environment. Visiting them in production shows only a local-development notice; content data and the editor do not load. `/api/admin/content/*` serves only the local backend and is not a public API.
 :::
 
 ## Local startup and entry
 
-When developing locally，The project can be started with the following command：
+When developing locally, start the project with:
 
 ```bash
 npm install
 npm run dev
 ```
 
-By default，The development server will run on `http://localhost:4321/`。Can be accessed directly after startup：
+By default the dev server runs at `http://localhost:4321/`. After it starts, open:
 
 ```text
 http://localhost:4321/admin/content/
 ```
 
-If the development port is modified locally，please change `4321` Replace with actual port。
+If you changed the dev port, replace `4321` with your actual port.
 
-Content Console read directly `src/content/**` source files under，No dependencies on databases or external services。New、Saving and deleting content files will fall into the warehouse，Relevant changes can be made through Git Tracking and fallback。
+The Content Console reads the source files under `src/content/**` directly, with no database or external services. Creating, saving, and deleting content files writes into the repository, so you can track and roll back changes through Git.
 
 ## Content types and capabilities
 
-Content Console Unified management of four types of content，But their capabilities are not the same：
+The Content Console manages four content types, but their capabilities differ:
 
-| content | Table of contents | New | edit | delete | List filter |
+| Content | Path | New | Edit | Delete | List filter |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| Essay | `src/content/essay/` | support | support | support | support |
-| Whisper | `src/content/bits/` | support | support | support | support |
-| Notes | `src/content/memo/index.md` | — | support | — | — |
-| about | `src/content/about/index.md` | — | support | — | — |
+| Essay | `src/content/essay/` | yes | yes | yes | yes |
+| Whisper | `src/content/bits/` | yes | yes | yes | yes |
+| Notes | `src/content/memo/index.md` | — | yes | — | — |
+| About | `src/content/about/index.md` | — | yes | — | — |
 
-Essays and murmurs are multiple pieces of content，You can create a new draft in the console、Edit and delete items one by one，The list also provides filtering and paging。Notes and About are fixed single-page content，Only existing text can be edited，New or deleted is not supported。
+Essays and Whispers are multi-entry collections: you can create drafts, edit, and delete entries one by one, and the list offers filtering and pagination. Notes and About are fixed single-page content; only the existing text can be edited, with no new or delete.
 
-## Browse、Filter and search
+## Browse, filter, and search
 
-Open `/admin/content/` 时，Default is Essay、Whisper、Notes、Overview of group display content。The top toolbar provides the following capabilities：
+Opening `/admin/content/` shows an overview that groups Essay, Whisper, and Notes content by default. The top toolbar provides:
 
-- search：by title、tag or slug Find across content
-- scope：在「All content」Switch between single-category content
-- state：All status / Published / Draft only
-- sort：Latest updates / title A-Z
-- years：Filter by content year
+- Search: find across content by title, tag, or slug
+- Scope: switch between "All content" and a single category
+- State: All / Published only / Drafts only
+- Sort: Latest update / Title A–Z
+- Years: filter by content year
 
-state、sort、Year filtering and paging are only for essays、Whisper takes effect；Notes and About are fixed single pages，Do not expose these filters。in list，Draft marked as `[draft]`，Close archive of essays tagged `[archive off]`。
+State, sort, year filtering, and pagination apply only to essays and Whispers; Notes and About are fixed single pages and do not expose these filters. In the list, drafts are marked `[draft]` and essays excluded from the archive are marked `[archive off]`.
 
-Each item is provided「edit」button，as well as「More」Modification information in the menu、Check at the front desk、Download and delete operations。
+Each item has an "Edit" button, plus a "More" menu with edit-info, view-on-site, download, and delete actions.
 
-## New and Edit
+## New and edit
 
 ### Essay
 
-Click on the essay group「Create new article」，After filling in the basic information such as the title, a draft will be generated，and jump to the edit page。
+In the essay group, click "New article". After filling in basic info such as the title, a draft is created and you jump to the editor.
 
-Provided by essay editing page：
+The essay editor provides:
 
-- based on CodeMirror The text editing area，Built-in multiple syntax highlighting themes and line number options
-- edit / Preview layout switch，Preview is rendered server-side
-- frontmatter Information panel：release date、Update date、Label、Draft and archive fields
-- Directory and Markdown Grammar Two Auxiliary Sidebars
-- Toolbar：Commonly used Markdown、mathematical formula、emoji、Pictures & Galleries
-- Text image upload：After uploading, save it to the attachment directory of the current content.，and insert Markdown
+- A CodeMirror-based text area with multiple syntax-highlight themes and line-number options
+- Edit / preview layout switching, with server-side rendered preview
+- A frontmatter panel: publish date, updated date, tags, draft, and archive fields
+- Two auxiliary sidebars: outline and Markdown syntax
+- A toolbar: common Markdown, math formulas, emoji, images, and galleries
+- Body image upload: saved to the current content's attachment directory and inserted as Markdown
 
 ### Whisper
 
-Click on the Whisper group「New activity」，After selecting the publishing time, a draft will be generated and jump to the editing page.。
+In the Whisper group, click "New activity". After choosing a publish time a draft is created and you jump to the editor.
 
-The Whispers editing page is an independent workbench，Editable text、Basic information and pictures（`images`）行，Support image upload，and provides real-time card previews，What you see and `/bits/` The cards in the list are consistent。
+The Whisper editor is a standalone workbench for editing text, basic info, and images (`images` rows). It supports image upload and a live card preview that matches the cards in the `/bits/` list exactly.
 
 ### Notes and About
 
-Notes and About are fixed single-page content，The edit page only processes text：
+Notes and About are fixed single-page content; the editor only handles text:
 
-- Notes：edit `src/content/memo/index.md` text，Support inserting text images、Page preview and text table of contents
-- about：edit `src/content/about/index.md` text，Friend links in preview and FAQ Will be rendered according to public page style；For contact link location `::contact-links` Occupancy control
+- Notes: edit the `src/content/memo/index.md` text, with support for inline images, page preview, and an in-text table of contents
+- About: edit the `src/content/about/index.md` text. Friend links and FAQ in the preview render with the public page styles; the contact-link slot is controlled by `::contact-links`
 
-The main and subtitles of the notes and about pages are not maintained here.，unified in Theme Console Adjustment。
+The titles and subtitles of the Notes and About pages are not maintained here — adjust them in the Theme Console.
 
-## Batch operation
+## Batch operations
 
-After checking items in the list，Passable「Batch operation」implement：
+After selecting items in the list, use "Batch operations" to:
 
-- release / Revise the draft：Batch switching `draft` state
-- download：Pack the source files of the selected content into zip download
-- delete：Delete selected items in bulk，Move source files to recycle bin（Will confirm before deleting）
+- Publish / set to draft: batch-toggle the `draft` state
+- Download: pack the selected content's source files into a zip
+- Delete: delete the selected items in bulk, moving source files to the trash (confirmed first)
 
-The scope of batch operations is the checked content in the current list；You can use filtering or search to narrow down the scope first，Process in batches again。
+Batch operations act on the currently checked items. Use filters or search to narrow the scope, then process in batches.
 
 ## Download and delete
 
-- download：in this article「More」Menu points「Download source file」，get the corresponding Markdown document
-- delete：in this article「More」Delete from menu，The source file will be moved to the Recycle Bin，rather than directly erasing；Will confirm before deleting
+- Download: from an item's "More" menu, choose "Download source file" to get its Markdown document
+- Delete: from an item's "More" menu; the source file is moved to the trash rather than erased outright, and is confirmed first
 
-Download and delete act on the source file itself。Delete only essays、Whisper support，Notes and About No deletion available。
+Download and delete act on the source file itself. Delete is supported only for essays and Whispers; Notes and About cannot be deleted.
 
 ## Content fields and writing conventions
 
-Content Console Responsible for entering and maintaining content，specific frontmatter Field、Image path rules and text writing conventions（Callout、Figure、Gallery、Formulas etc.）still warehouse README 「Content and Writing」Subject to，Not repeated here。
+The Content Console is for entering and maintaining content. Specific frontmatter fields, image-path rules, and body writing conventions (callouts, figures, galleries, formulas, etc.) are still governed by the "Content and writing" section of the repo README, so they are not repeated here.
 
-**New content is draft by default**。Essay、Drafts of Whispers are visible in local development，Production build、RSS with public lists automatically filtered；Notes are single-page content，Should not be marked as draft。
+**New content is a draft by default.** Essay and Whisper drafts are visible during local development and are automatically filtered out of production builds, RSS, and public lists. Notes are single-page content and should not be marked as draft.
 
 ---
 
-## write at the end 
+## A note at the end
 
 :::info[Why build a local backend?]
-Content Console It is the most complicated in the whole backstage、The part that takes the most time。Since they are all writing locally、You need to start the development server，Edit directly Markdown can also be completed，Some friends may wonder why we need to build such a backend？
+The Content Console is the most complex, time-consuming part of the whole backend. Since everything is written locally and you already need the dev server, you could just edit the Markdown directly — so why build this backend?
 
-- astro-whono Targeted users may not be familiar with the front end。Things to remember when editing source files directly frontmatter Field、Directory structure and writing conventions，The background collects these into forms and buttons，Lower the barrier to entry。
-- When writing, you are more concerned about the final typesetting effect.。Built-in server preview on edit page，text、Both cards and about pages can see a near-foreground presentation before saving.，No need to switch back and forth to the browser to confirm。
-- Common content formats（Callout、picture、gallery、formula、emoji 等）Can be inserted directly from the toolbar，Eliminate handwritten markup and documentation。
-- Notes、About this type of fixed single page，In the past, only source files could be modified；Text can now be edited in situ in the background and previewed，more convenient。
+- astro-whono's target users may not be familiar with front-end work. Remembering frontmatter fields, directory structure, and writing conventions when editing source files directly is a lot; the backend gathers these into forms and buttons to lower the barrier.
+- When writing, the final layout matters most. The editor's built-in server preview shows text, cards, and About pages close to how they'll appear before you save, so you don't have to keep switching to the browser.
+- Common content formats (callouts, images, galleries, formulas, emoji, etc.) can be inserted straight from the toolbar, sparing you hand-written markup and docs.
+- Fixed single pages like Notes and About used to require editing source files; now you can edit the text in place in the backend and preview it, which is more convenient.
 
-Content Console The goal is not to replace the command line or editor，Rather, it allows people without coding foundation to easily maintain their own content.。Of course, the best solution is to make it real CMS ，But that's another level of work，Not in the immediate plans either。
+The Content Console is not meant to replace the command line or your editor. It exists so people without a coding background can comfortably maintain their own content. The ideal, of course, would be a real CMS — but that is a different scope of work and is not in the current plan.
 :::
 
-### 🔜Current progress and follow-up plans
+### 🔜 Current progress and next steps
 
-Content Console The functions originally envisioned are now basically implemented，Admin The backend follow-up will also focus on maintenance and detail optimization.，There are currently no plans to add new features。If you have any suitable ideas or suggestions in use，Suggestions are also welcome。
+The Content Console's originally-envisioned features are now mostly done. The admin backend will focus on maintenance and detail polish going forward, with no new features planned. If you have ideas or suggestions while using it, they are welcome.
 
-:::tip[Follow-up plan]
-Comments feature is planned，At present, we are initially considering accessing Waline。Essay（essay）Access is relatively straightforward；Whisper（bits）It is a short dynamic type page，It is also necessary to redesign the style and adaptation of the comment system on this kind of page.。Therefore, although the comment module is already included in the plan，It may take some time for it to be officially launched。
+:::tip[Next steps]
+A comments feature is planned, currently leaning toward Waline. Wiring it into essays is fairly straightforward; Whispers are short, feed-style pages and will need a redesigned comment layout for that kind of page. So while the comment module is on the roadmap, it may take some time before it ships.
 :::
 
 ---
 
-The above content covers Content Console Current content management entrance and common operations。If you encounter content exceptions during use、save question，Or have ideas and suggestions for features，All are welcome to submit Issue。
+The above covers the Content Console's content-management entries and common operations. If you run into content anomalies, save issues, or have feature ideas, please open an Issue.

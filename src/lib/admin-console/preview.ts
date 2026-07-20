@@ -194,7 +194,7 @@ const createPreviewProcessor = (collection: AdminContentCollectionKey, sourceFil
 
   const processor = unified()
     .use(remarkParse)
-    // The background preview is handwritten pipeline，Not inherited Astro Markdown default GFM / smartypants。
+    // The background preview is handwritten pipeline, Not inherited Astro Markdown default GFM / smartypants.
     .use(remarkGfm)
     .use(remarkSmartypants, markdownSmartypantsOptions);
 

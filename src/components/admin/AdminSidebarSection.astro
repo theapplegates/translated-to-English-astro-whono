@@ -29,21 +29,21 @@ const { navIdOrder } = Astro.props;
       <label class="admin-field">
         <span class="admin-label">
           <span class="admin-label__main">Sidebar site name</span>
-          <span class="admin-label__hint">（Display the site title on the left）</span>
+          <span class="admin-label__hint">(Display the site title on the left)</span>
         </span>
         <input class="admin-field__control" id="shell-brand-title" type="text" autocomplete="off" />
       </label>
       <label class="admin-field">
         <span class="admin-label">
           <span class="admin-label__main">Sidebar quote copy</span>
-          <span class="admin-label__hint">（Support line wrap display）</span>
+          <span class="admin-label__hint">(Support line wrap display)</span>
         </span>
         <textarea class="admin-field__control" id="shell-quote" rows="4"></textarea>
       </label>
       <div class="admin-field admin-field--sidebar-divider">
         <span class="admin-label">
           <span class="admin-label__main">sidebar divider</span>
-          <span class="admin-label__hint">（Control the strength of the separation from the main text）</span>
+          <span class="admin-label__hint">(Control the strength of the separation from the main text)</span>
         </span>
         <div class="admin-segmented" role="radiogroup" aria-label="Sidebar divider style">
           {
@@ -66,7 +66,7 @@ const { navIdOrder } = Astro.props;
       <div class="admin-subgroup admin-subgroup--sidebar-icons">
         <p class="admin-subtitle">
           <span class="admin-subtitle__main">Sidebar icon</span>
-          <span class="admin-subtitle__hint">（Select the icon shown at the bottom）</span>
+          <span class="admin-subtitle__hint">(Select the icon shown at the bottom)</span>
         </p>
         <div class="admin-sidebar-icon-grid" role="group" aria-label="Show and hide sidebar icons">
           <label class="admin-sidebar-icon-toggle" for="ui-reading-entry" title="Show reading mode entry">
@@ -110,13 +110,13 @@ const { navIdOrder } = Astro.props;
             id="ui-sidebar-actions-show-admin-entry-row"
             class="admin-sidebar-icon-toggle"
             for="ui-sidebar-actions-show-admin-entry"
-            title="Show site overview portal（/admin/）"
+            title="Show site overview portal(/admin/)"
           >
             <input
               id="ui-sidebar-actions-show-admin-entry"
               type="checkbox"
               aria-label="show /admin/ Entrance"
-              title="Show site overview portal（/admin/）"
+              title="Show site overview portal(/admin/)"
             />
             <span
               class="admin-btn admin-btn--tool admin-btn--compact admin-btn--icon admin-sidebar-icon-toggle__button"
@@ -135,7 +135,7 @@ const { navIdOrder } = Astro.props;
         <AdminHelpTip
           id="admin-nav-ornament-hint"
           label="Sidebar navigation suffix description"
-          text={`Suffix supports short text/symbol；Leave blank to hide，enter ${ADMIN_NAV_ORNAMENT_DEFAULT} Restore default。`}
+          text={`Suffix supports short text/symbol;Leave blank to hide, enter ${ADMIN_NAV_ORNAMENT_DEFAULT} Restore default.`}
         />
       </p>
       <div class="admin-nav-grid admin-nav-grid--compact">
@@ -184,7 +184,7 @@ const { navIdOrder } = Astro.props;
               </label>
               <label class="admin-field admin-nav-field admin-nav-field--ornament">
                 <span class="admin-nav-cell-label">Navigation suffix</span>
-                <span class="sr-only">{id} Navigation suffix，Leave blank to not display</span>
+                <span class="sr-only">{id} Navigation suffix, Leave blank to not display</span>
                 <input
                   class="admin-field__control admin-field__control--soft"
                   data-nav-field="ornament"

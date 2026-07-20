@@ -15,10 +15,10 @@ const getOriginBadgeLabel = (origin: AdminImageBrowseItem['origin']): string => 
   return 'content attachments';
 };
 
-// Text image quotes：仅 public Graphs can be written as root absolute paths Markdown text（with existing /images/... Consistent agreement）。
-// src/assets Need to be in code import Then handed over to the packager for processing；src/content Attachments should be referenced using relative paths within the content they belong to.，
-// And this panel does not have「Currently editing file」context，Neither is generated here，Give only reason for disabling。
-// encodeURI Not escaping ( ) # ?，but they will destroy Markdown Target analysis（bracket truncation、# 当 fragment、? 当 query），Need to be completed manually。
+// Text image quotes: only public Graphs can be written as root absolute paths Markdown text(with existing /images/... Consistent agreement).
+// src/assets Need to be in code import Then handed over to the packager for processing;src/content Attachments should be referenced using relative paths within the content they belong to., 
+// And this panel does not have"Currently editing file"context, Neither is generated here, Give only reason for disabling.
+// encodeURI Not escaping ( ) # ?, but they will destroy Markdown Target analysis(bracket truncation, # when fragment, ? when query), Need to be completed manually.
 const encodeMarkdownImageDestination = (value: string): string =>
   encodeURI(value)
     .replace(/\(/g, '%28')
@@ -36,7 +36,7 @@ const getMarkdownReference = (
   if (item.origin === 'src/content') {
     return { disabledReason: 'This image needs to be referenced using relative paths in the article it belongs to.' };
   }
-  return { disabledReason: 'Site materials need to be imported in the code，In-text citations are not supported yet' };
+  return { disabledReason: 'Site materials need to be imported in the code, In-text citations are not supported yet' };
 };
 
 const getCardOverlayMetaText = (

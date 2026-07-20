@@ -60,7 +60,7 @@ const createDiagnosticListItem = (diagnostic: ThemeSettingsReadDiagnostic): HTML
   item.appendChild(createDiagnosticMeta('document', diagnostic.path, { mono: true }));
 
   if (typeof diagnostic.line === 'number' && typeof diagnostic.column === 'number') {
-    item.appendChild(createDiagnosticMeta('Location', `第 ${diagnostic.line} 行，第 ${diagnostic.column} 列`));
+    item.appendChild(createDiagnosticMeta('Location', `Line ${diagnostic.line}, Column ${diagnostic.column}`));
   }
 
   if (diagnostic.detail) {

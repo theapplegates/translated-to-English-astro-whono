@@ -7,7 +7,7 @@ title: Markdown Smoke Fixture
 ## Callout
 
 :::tip[a little suggestion]
-here it is smoke fixture 的 callout content。
+here is the smoke fixture's callout content.
 :::
 
 ## Code Block

@@ -1,7 +1,7 @@
 {
   "title": "Astro Themes by Whono",
-  "description": "one Astro theme display station：lightweight、Maintainable、Reusable。",
-  "defaultLocale": "zh-CN",
+  "description": "A showcase site for an Astro theme: lightweight, maintainable, reusable.",
+  "defaultLocale": "en-US",
   "footer": {
     "startYear": 2025,
     "showCurrentYear": true,
@@ -9,7 +9,7 @@
   },
   "adminOverview": {
     "publicVisible": true,
-    "hiddenMessage": "The author has not published this page yet。"
+    "hiddenMessage": "The author has not published this page yet."
   },
   "socialLinks": {
     "github": "https://github.com/cxro/astro-whono",

@@ -77,7 +77,7 @@ export const isEssayEditorValues = (value: AdminContentWorkspaceEditorValues | n
 export const isBitsEditorValues = (value: AdminContentWorkspaceEditorValues | null): value is AdminBitsEditorValues =>
   Boolean(value && 'authorName' in value && 'authorAvatar' in value && 'imagesText' in value);
 
-// Editor values ​​are flat field bags（string only/Boolean basic type），按 own Just compare key names and values ​​one by one，Does not depend on key order。
+// Editor values ​​are flat field bags(string only/Boolean basic type), by own Just compare key names and values ​​one by one, Does not depend on key order.
 const isEqualContentEditorValues = <Values extends AdminContentWorkspaceEditorValues>(
   left: Values | null,
   right: Values | null

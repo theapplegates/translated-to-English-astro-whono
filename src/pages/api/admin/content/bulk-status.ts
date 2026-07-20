@@ -41,7 +41,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createAdminJsonErrorResponse(bodyResult.status, [bodyResult.error]);

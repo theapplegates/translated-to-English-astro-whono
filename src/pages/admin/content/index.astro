@@ -89,7 +89,7 @@ const shouldOpenContentFilters = pageData?.hasActiveFilters ?? false;
 const clearScopedStateHref = pageData && pageData.collection !== 'all'
   ? withBase(getAdminContentEntryListHref(pageData.collection))
   : resetHref;
-const searchPlaceholder = 'Search title、tag or slug…';
+const searchPlaceholder = 'Search title, tag or slug…';
 
 const getContentEntryExportHref = (collection: string, entryId: string): string => {
   const params = new URLSearchParams({
@@ -126,7 +126,7 @@ const hasListInfoAction = (collection: AdminContentCollectionKey): collection is
   collection === 'essay' || collection === 'bits';
 
 const getContentPaginationHref = (page: number): string => {
-  // Pagination is only specific collection scope；Overview and full content searches do not generate pagination links。
+  // Pagination is only specific collection scope;Overview and full content searches do not generate pagination links.
   if (!pageData || pageData.collection === 'all') return resetHref;
 
   const { filterState } = pageData;
@@ -192,9 +192,9 @@ const contentFilterMenuGroupName = 'admin-content-filter-menu';
 
 const getContentEmptyMessage = (sectionLabel: string): string => {
   const query = pageData?.filterState.query.trim() ?? '';
-  if (query) return `${sectionLabel}no hits“${query}”content。`;
-  if (pageData?.hasActiveFilters) return `${sectionLabel}There is no content matching the current filter criteria。`;
-  return `${sectionLabel}No content yet。`;
+  if (query) return `${sectionLabel}no hits“${query}”content.`;
+  if (pageData?.hasActiveFilters) return `${sectionLabel}There is no content matching the current filter criteria.`;
+  return `${sectionLabel}No content yet.`;
 };
 
 const CONTENT_CREATE_ACTIONS = {
@@ -253,7 +253,7 @@ const getContentCreateAction = (
           <form class="admin-content-toolbar" method="get">
             <div class="admin-content-home-toolbar">
               <h2 id="admin-content-home-title" class="admin-content-home-toolbar__title">Content management</h2>
-              <span class="admin-content-home-toolbar__separator" aria-hidden="true">｜</span>
+              <span class="admin-content-home-toolbar__separator" aria-hidden="true">|</span>
 
               <input
                 id="admin-content-filter-toggle"
@@ -520,14 +520,14 @@ const getContentCreateAction = (
                                 const publicHref = item.publicHref ? withBase(item.publicHref) : null;
                                 const publicFallbackLabel = getAdminContentPublicFallbackLabel(item);
                                 const exportHref = getContentEntryExportHref(item.collection, item.id);
-                                const deleteUnsupportedReason = capability.deleteUnsupportedReason ?? `current collection Deletion is not supported yet：${item.collection}`;
+                                const deleteUnsupportedReason = capability.deleteUnsupportedReason ?? `current collection Deletion is not supported yet: ${item.collection}`;
                                 const sourceErrorPanelId = item.sourceError
                                   ? `admin-content-source-error-${section.collection}-${itemIndex}`
                                   : null;
                                 const hasBulkIdentity = Boolean(item.collection && item.id && item.relativePath);
                                 const bulkCheckboxLabel = hasBulkIdentity
                                   ? `choose${item.title}`
-                                  : 'Missing source file identity，Unable to operate in batches';
+                                  : 'Missing source file identity, Unable to operate in batches';
                                 return (
                                   <li
                                     class="admin-row admin-row--plain admin-row--interactive admin-row--table admin-content-item"
@@ -559,7 +559,7 @@ const getContentCreateAction = (
                                           <summary
                                             class="admin-content-source-error__trigger"
                                             title={item.sourceError}
-                                            aria-label={`View source file exception：${item.title}`}
+                                            aria-label={`View source file exception: ${item.title}`}
                                             aria-controls={sourceErrorPanelId}
                                           >
                                             <AdminIcon name="triangle-alert" size={14} />
@@ -709,7 +709,7 @@ const getContentCreateAction = (
         </section>
       ) : (
         <AdminReadonlyNotice>
-          To view or edit the content index，Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance。
+          To view or edit the content index, Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance.
         </AdminReadonlyNotice>
       )
     }

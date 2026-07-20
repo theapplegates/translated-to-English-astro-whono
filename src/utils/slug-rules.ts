@@ -30,8 +30,8 @@ export const flattenEntryIdToSlug = (entryId: string): string =>
   entryId.replaceAll('/', '-');
 
 /**
- * Astro glob loader Will do it according to the path segment GitHub-style slug ation gets public by default entry id。
- * Admin Content source file entryId Keep real file name，Therefore write verification requires an explicit derived public id。
+ * Astro glob loader Will do it according to the path segment GitHub-style slug ation gets public by default entry id.
+ * Admin Content source file entryId Keep real file name, Therefore write verification requires an explicit derived public id.
  */
 export const contentSourceEntryIdToPublicEntryId = (entryId: string): string => {
   const normalized = entryId.trim().replace(/\\/g, '/').replace(/\/+$/g, '');

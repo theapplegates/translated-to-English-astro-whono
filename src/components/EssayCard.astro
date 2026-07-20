@@ -26,7 +26,7 @@ const {
 const displayBadge = badge.trim() ? badge : 'Essay';
 const shouldShowMetaLine = articleMetaSettings.showDate || (articleMetaSettings.showTags && visibleTags.length > 0);
 const displayDate = updatedAt ?? date;
-const displayDateLabel = updatedAt ? 'updated on：' : (articleMetaSettings.dateLabel ?? '');
+const displayDateLabel = updatedAt ? 'updated on: ' : (articleMetaSettings.dateLabel ?? '');
 ---
 
 <a

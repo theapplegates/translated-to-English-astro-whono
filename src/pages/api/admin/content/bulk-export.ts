@@ -62,7 +62,7 @@ const exportOneEntry = async (
     return {
       result: createResult(entry, {
         status: 'skipped',
-        errors: [`Not supported content collection：${entry.collection}`],
+        errors: [`Not supported content collection: ${entry.collection}`],
         errorCodes: ['unsupported_collection']
       }),
       file: null
@@ -73,7 +73,7 @@ const exportOneEntry = async (
     return {
       result: createResult(entry, {
         status: 'skipped',
-        errors: [`current collection Export is not supported yet：${entry.collection}`],
+        errors: [`current collection Export is not supported yet: ${entry.collection}`],
         errorCodes: ['unsupported_collection']
       }),
       file: null
@@ -87,7 +87,7 @@ const exportOneEntry = async (
         result: createResult(entry, {
           status: 'failed',
           relativePath: download.relativePath,
-          errors: ['Content file path inconsistent with list detected，Please refresh and try again'],
+          errors: ['Content file path inconsistent with list detected, Please refresh and try again'],
           errorCodes: ['relative_path_mismatch']
         }),
         file: null
@@ -120,7 +120,7 @@ const exportOneEntry = async (
     return {
       result: createResult(entry, {
         status: 'failed',
-        errors: ['Failed to export content source file，Please check local file permissions or logs'],
+        errors: ['Failed to export content source file, Please check local file permissions or logs'],
         errorCodes: ['export_failed']
       }),
       file: null
@@ -164,23 +164,23 @@ const getReportStatusLabel = (status: AdminContentBulkResult['status']): string 
 const formatReportList = (title: string, results: readonly AdminContentBulkResult[]): string[] => {
   const lines = [`## ${title}`, ''];
   if (results.length === 0) {
-    lines.push('无。', '');
+    lines.push('none.', '');
     return lines;
   }
 
   for (const result of results) {
     lines.push(`- ${result.collection}/${result.entryId}`);
-    lines.push(`  - state：${getReportStatusLabel(result.status)}`);
-    if (result.relativePath) lines.push(`  - path：${result.relativePath}`);
-    if (result.trashedPath) lines.push(`  - Recycle bin path：${result.trashedPath}`);
+    lines.push(`  - state: ${getReportStatusLabel(result.status)}`);
+    if (result.relativePath) lines.push(`  - path: ${result.relativePath}`);
+    if (result.trashedPath) lines.push(`  - Recycle bin path: ${result.trashedPath}`);
     if (result.changedFields && result.changedFields.length > 0) {
-      lines.push(`  - Change fields：${result.changedFields.join(', ')}`);
+      lines.push(`  - Change fields: ${result.changedFields.join(', ')}`);
     }
     if (result.errorCodes && result.errorCodes.length > 0) {
-      lines.push(`  - error code：${result.errorCodes.join(', ')}`);
+      lines.push(`  - error code: ${result.errorCodes.join(', ')}`);
     }
     if (result.errors && result.errors.length > 0) {
-      lines.push(`  - error message：${result.errors.join('；')}`);
+      lines.push(`  - error message: ${result.errors.join(';')}`);
     }
   }
 
@@ -200,12 +200,12 @@ const createExportReportMarkdown = (
     '',
     '## summary',
     '',
-    `- Number of requests：${summary.requested}`,
-    `- Processed：${summary.processed}`,
-    `- success：${summary.succeeded}`,
-    `- No modification required：${summary.unchanged}`,
-    `- jump over：${summary.skipped}`,
-    `- fail：${summary.failed}`,
+    `- Number of requests: ${summary.requested}`,
+    `- Processed: ${summary.processed}`,
+    `- success: ${summary.succeeded}`,
+    `- No modification required: ${summary.unchanged}`,
+    `- jump over: ${summary.skipped}`,
+    `- fail: ${summary.failed}`,
     '',
     ...formatReportList('success', succeeded),
     ...formatReportList('jump over', skipped),
@@ -234,7 +234,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createAdminJsonErrorResponse(bodyResult.status, [bodyResult.error]);

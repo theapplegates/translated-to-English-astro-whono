@@ -28,7 +28,7 @@ export const toInlineBitsTags = (tags: readonly string[]): string =>
 
 export const fromInlineBitsTags = (text: string): string[] =>
   text
-    .split(/[\s,，]+/)
+    .split(/[\s,, ]+/)
     .map(normalizeTagText)
     .filter((tag) => Boolean(tag) && !isLocationTag(tag));
 

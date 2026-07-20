@@ -32,9 +32,9 @@ import {
   splitMarkdownFrontmatter
 } from './frontmatter';
 
-// Admin Content list to follow src/content.config.ts current glob boundary：index only .md。
+// Admin Content list to follow src/content.config.ts current glob boundary: index only .md.
 const ADMIN_CONTENT_SOURCE_INDEX_EXT_RE = /\.md$/i;
-// Intentionally not shared with public modules：Admin Possible future differentiation from public search semantics。
+// Intentionally not shared with public modules: Admin Possible future differentiation from public search semantics.
 const MAX_SEARCH_INDEX_TEXT = 600;
 const ESSAY_EXCERPT_LIMIT = 120;
 const BITS_EXCERPT_LIMIT = 180;
@@ -203,7 +203,7 @@ const mergeSourceError = (...messages: Array<string | null | undefined>): string
   const normalized = messages
     .map((message) => normalizeOptionalText(message))
     .filter(Boolean);
-  return normalized.length > 0 ? normalized.join('；') : null;
+  return normalized.length > 0 ? normalized.join(';') : null;
 };
 
 const getSourceRecordErrorMessage = (error: unknown): string => {
@@ -213,8 +213,8 @@ const getSourceRecordErrorMessage = (error: unknown): string => {
     : '';
 
   return ['ENOENT', 'EACCES', 'EPERM'].includes(code)
-    ? `Failed to read source file：${message}`
-    : `frontmatter Parsing failed：${message}`;
+    ? `Failed to read source file: ${message}`
+    : `frontmatter Parsing failed: ${message}`;
 };
 
 const getBodyDerived = (record: SourceRecord): AdminContentSourceBodyDerived | null =>
@@ -388,7 +388,7 @@ const FRONTMATTER_ADAPTERS: Record<AdminContentCollectionKey, FrontmatterAdapter
   about: createAboutSourceIndexItem
 };
 
-// Manifest Sorting does not determine final list order，Only the order of requested snapshots on different systems is guaranteed to be stable。
+// Manifest Sorting does not determine final list order, Only the order of requested snapshots on different systems is guaranteed to be stable.
 const orderSourceFiles = (files: readonly string[]): string[] =>
   files.slice().sort((left, right) =>
     toAdminContentRelativeProjectPath(left).localeCompare(toAdminContentRelativeProjectPath(right), 'en')

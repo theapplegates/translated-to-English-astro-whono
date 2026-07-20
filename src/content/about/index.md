@@ -1,11 +1,11 @@
 ---
 ---
 
-Hello，welcome here
+Hello, welcome here
 
 This is Whono Thematic about Page example
 
-Sample content coverage site introduction、Friendly link list、Frequently Asked Questions and Contact Instructions，Can be replaced by actual site。
+Sample content coverage site introduction, Friendly link list, Frequently Asked Questions and Contact Instructions, Can be replaced by actual site.
 
 ## friends
 
@@ -21,17 +21,17 @@ A minimalist double column Astro theme
 ## FAQ
 
 :::faq{question="How to exchange friend links？"}
-can pass GitHub Issue Contact me or [Send email](mailto:your email@example.com?subject=Application for exchanging friend links&body=Site name：%0ALink：%0AIntroduction：%0Aavatar：)，Please include site name、Link、Introduction and avatar。
+can pass GitHub Issue Contact me or [Send email](mailto:your email@example.com?subject=Application for exchanging friend links&body=Site name: %0ALink: %0AIntroduction: %0Aavatar: ), Please include site name, Link, Introduction and avatar.
 
 ::site-info{name="Whono" url="https://astro.whono.me/" description="A minimalist double column Astro theme" avatar="https://astro.whono.me/author/avatar.webp"}
 :::
 
 :::faq{question="Can the content here be reproduced?？"}
-Please indicate the source when reprinting；If an article is separately marked with the authorization method，According to the description of that article。
+Please indicate the source when reprinting;If an article is separately marked with the authorization method, According to the description of that article.
 :::
 
 ## connect
 
-if you have questions、suggestion，Or want to subscribe for updates，Welcome to contact。
+if you have questions, suggestion, Or want to subscribe for updates, Welcome to contact.
 
 ::contact-links

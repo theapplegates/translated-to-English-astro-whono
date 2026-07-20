@@ -376,12 +376,12 @@ export const bindAdminThemeNavigationGuard = ({
         return;
       }
 
-      const confirmed = window.confirm('There are currently unsaved changes，Are you sure you want to leave this page?？');
+      const confirmed = window.confirm('There are currently unsaved changes, Are you sure you want to leave this page?？');
       if (confirmed) return;
 
       event.preventDefault();
       event.stopPropagation();
-      uiState.setStatus('warn', 'Page switching canceled，Please save or reset current changes first', { announce: false });
+      uiState.setStatus('warn', 'Page switching canceled, Please save or reset current changes first', { announce: false });
     },
     true
   );

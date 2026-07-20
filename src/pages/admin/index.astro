@@ -51,12 +51,12 @@ const statItems = overview && wordMetric
       {
         label: 'Number of articles',
         value: String(articleCount),
-        suffix: '篇'
+        suffix: 'articles'
       },
       {
         label: 'Number of tags',
         value: String(overview.stats.tagCount),
-        suffix: '个'
+        suffix: ''
       },
       {
         label: 'text statistics',
@@ -66,7 +66,7 @@ const statItems = overview && wordMetric
       {
         label: 'since last update',
         value: lastUpdateDays,
-        suffix: overview.stats.lastUpdate ? '天' : ''
+        suffix: overview.stats.lastUpdate ? 'days' : ''
       }
     ]
   : [];
@@ -164,7 +164,7 @@ const statItems = overview && wordMetric
                   }
                 </div>
               ) : (
-                <p class="admin-site-overview__empty">No archive tags yet。</p>
+                <p class="admin-site-overview__empty">No archive tags yet.</p>
               )
             }
           </section>
@@ -209,7 +209,7 @@ const statItems = overview && wordMetric
               }
             </ol>
           ) : (
-            <p class="admin-site-overview__empty">No recent content。</p>
+            <p class="admin-site-overview__empty">No recent content.</p>
           )
         }
       </section>
@@ -220,7 +220,7 @@ const statItems = overview && wordMetric
             <AdminIcon name="activity" class="admin-site-overview__icon" size={14} />
             writing activity
           </h3>
-          <span class="admin-site-overview__activity-range">recent 90 天</span>
+          <span class="admin-site-overview__activity-range">recent 90 days</span>
         </div>
         {
           overview.writingActivity.length > 0 ? (
@@ -229,14 +229,14 @@ const statItems = overview && wordMetric
                 overview.writingActivity.map((day) => (
                   <span
                     class={`admin-site-overview__activity-dot is-level-${day.level}`}
-                    title={`${day.dateLabel}: ${day.count} 项`}
+                    title={`${day.dateLabel}: ${day.count} entries`}
                     aria-hidden="true"
                   ></span>
                 ))
               }
             </div>
           ) : (
-            <p class="admin-site-overview__empty">There are currently no public essays or remarks that can be used for activity statistics.。</p>
+            <p class="admin-site-overview__empty">There are currently no public essays or remarks that can be used for activity statistics..</p>
           )
         }
       </section>
@@ -280,7 +280,7 @@ const statItems = overview && wordMetric
                     overview.systemStatus.activity.map((day) => (
                       <span
                         class={`admin-site-overview__system-pulse-bar is-level-${day.level}`}
-                        title={`${day.dateLabel}: ${day.count} 项`}
+                        title={`${day.dateLabel}: ${day.count} entries`}
                         aria-hidden="true"
                       ></span>
                     ))

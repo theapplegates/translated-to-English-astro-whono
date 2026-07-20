@@ -55,13 +55,13 @@ const splitTags = (value: string) =>
   Array.from(
     new Set(
       value
-        .split(/[,\s，]+/)
+        .split(/[,\s, ]+/)
         .map((part) => part.trim())
         .filter(Boolean)
     )
   );
 
-const squashTagSpaces = (value: string) => value.replace(/，/g, ',').replace(/\s{2,}/g, ' ');
+const squashTagSpaces = (value: string) => value.replace(/, /g, ',').replace(/\s{2,}/g, ' ');
 
 const escapeYamlDoubleQuoted = (value: string) =>
   value.replace(/[\n\r\t"\\]/g, (char) => {
@@ -375,11 +375,11 @@ export const initBitsDraft = (): BitsDraftController | null => {
   };
 
   const setAuthorPlaceholders = () => {
-    if (authorNameEl) authorNameEl.placeholder = defaultAuthorName ? `default：${defaultAuthorName}` : 'default：anonymous';
+    if (authorNameEl) authorNameEl.placeholder = defaultAuthorName ? `default: ${defaultAuthorName}` : 'default: anonymous';
     if (authorAvatarEl) {
       authorAvatarEl.placeholder = defaultAuthorAvatar
-        ? `default：${defaultAuthorAvatar}`
-        : 'Relative image path can be filled in（For example author/avatar.webp，Leave blank to use default avatar）';
+        ? `default: ${defaultAuthorAvatar}`
+        : 'Relative image path can be filled in(For example author/avatar.webp, Leave blank to use default avatar)';
     }
   };
 
@@ -414,10 +414,10 @@ export const initBitsDraft = (): BitsDraftController | null => {
     const authorName = normalizeAuthorName(authorNameEl?.value ?? '');
     const authorAvatar = normalizeAuthorAvatar(authorAvatarEl?.value ?? '');
     const displayName = authorName || defaultAuthorName || 'anonymous';
-    const label = !authorName && !authorAvatar ? `${displayName}（current）` : displayName;
+    const label = !authorName && !authorAvatar ? `${displayName}(current)` : displayName;
     if (identityNameEl) identityNameEl.textContent = label;
     const avatarSrc = authorAvatar || defaultAuthorAvatar;
-    const fallback = Array.from(displayName)[0] ?? '匿';
+    const fallback = Array.from(displayName)[0] ?? 'A';
     renderIdentityAvatar(avatarSrc, fallback);
   };
 
@@ -524,16 +524,16 @@ export const initBitsDraft = (): BitsDraftController | null => {
       const width = image.naturalWidth;
       const height = image.naturalHeight;
       if (!width || !height) {
-        setStatus('Unable to read automatically，Please fill in manually。');
+        setStatus('Unable to read automatically, Please fill in manually.');
         return;
       }
       refs.widthEl.value = String(width);
       refs.heightEl.value = String(height);
-      setStatus(`Read automatically：${width}×${height}`);
+      setStatus(`Read automatically: ${width}×${height}`);
     };
     image.onerror = () => {
       if (requestId !== state.requestId) return;
-      setStatus('Unable to read automatically，Please fill in manually。');
+      setStatus('Unable to read automatically, Please fill in manually.');
     };
     image.src = previewSrc;
   };
@@ -609,7 +609,7 @@ export const initBitsDraft = (): BitsDraftController | null => {
       const widthValue = refs.widthEl.value.trim();
       const heightValue = refs.heightEl.value.trim();
       if (!widthValue || !heightValue) {
-        setStatus('Picture has been filled in，Please complete the width and height。', 'error');
+        setStatus('Picture has been filled in, Please complete the width and height.', 'error');
         if (widthValue) refs.heightEl.focus();
         else refs.widthEl.focus();
         return null;
@@ -617,12 +617,12 @@ export const initBitsDraft = (): BitsDraftController | null => {
       const width = Number(widthValue);
       const height = Number(heightValue);
       if (!Number.isFinite(width) || width <= 0) {
-        setStatus('The image width needs to be a positive number。', 'error');
+        setStatus('The image width needs to be a positive number.', 'error');
         refs.widthEl.focus();
         return null;
       }
       if (!Number.isFinite(height) || height <= 0) {
-        setStatus('The image height needs to be a positive number。', 'error');
+        setStatus('The image height needs to be a positive number.', 'error');
         refs.heightEl.focus();
         return null;
       }
@@ -635,7 +635,7 @@ export const initBitsDraft = (): BitsDraftController | null => {
     if (!contentEl) return null;
     const content = contentEl.value.trim();
     if (!content) {
-      setStatus('Please fill in the content first。', 'error');
+      setStatus('Please fill in the content first.', 'error');
       contentEl.focus();
       return null;
     }
@@ -652,7 +652,7 @@ export const initBitsDraft = (): BitsDraftController | null => {
     const authorName = normalizeAuthorName(authorNameEl?.value ?? '');
     const authorAvatar = normalizeBitsAvatarPath(authorAvatarEl?.value ?? '');
     if (authorAvatar === undefined) {
-      setStatus('Only relative image paths are allowed for author avatars（For example author/avatar.webp），Don't bring it public/、Don't take / beginning，Also don't use URL、..、?、#。', 'error');
+      setStatus('Only relative image paths are allowed for author avatars (e.g. author/avatar.webp). Do not include public/, do not start with /, and do not use a URL, .., ?, or #.', 'error');
       authorAvatarEl?.focus();
       return null;
     }
@@ -864,7 +864,7 @@ export const initBitsDraft = (): BitsDraftController | null => {
     manualTextarea.select();
     const copied = await tryClipboardCopy(manualTextarea.value);
     if (manualNote) {
-      manualNote.textContent = copied ? 'Draft copied。' : 'Text selected for you，按 ⌘C / Ctrl+C copy。';
+      manualNote.textContent = copied ? 'Draft copied.' : 'Text selected for you, by ⌘C / Ctrl+C copy.';
     }
   });
 
@@ -884,11 +884,11 @@ export const initBitsDraft = (): BitsDraftController | null => {
     } else if (hasGenerated && lastMarkdown) {
       markdown = lastMarkdown;
     } else {
-      setStatus('Please fill in the content first。', 'error');
+      setStatus('Please fill in the content first.', 'error');
       contentEl?.focus();
       return;
     }
-    showManualCopy(markdown, 'Draft generated。');
+    showManualCopy(markdown, 'Draft generated.');
   });
 
   toolbar?.addEventListener('click', (event) => {
@@ -933,12 +933,12 @@ export const initBitsDraft = (): BitsDraftController | null => {
     if (!markdown) return;
     rememberMarkdown(markdown);
     if (!window.isSecureContext || !navigator.clipboard?.writeText) {
-      showManualCopy(markdown, 'Draft generated。');
+      showManualCopy(markdown, 'Draft generated.');
       return;
     }
     const copied = await tryClipboardCopy(markdown);
-    if (copied) setStatus('Draft copied。', 'success');
-    else showManualCopy(markdown, 'Draft generated。');
+    if (copied) setStatus('Draft copied.', 'success');
+    else showManualCopy(markdown, 'Draft generated.');
   });
 
   downloadBtn?.addEventListener('click', () => {
@@ -955,7 +955,7 @@ export const initBitsDraft = (): BitsDraftController | null => {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    setStatus('Draft downloaded。', 'success');
+    setStatus('Draft downloaded.', 'success');
   });
 
   cachedController = {

@@ -64,7 +64,7 @@ export const formatAdminImageMetaSummary = (
   meta: Pick<AdminImageClientMeta, 'kind' | 'origin' | 'width' | 'height' | 'size'>
 ): string => {
   if (meta.kind === 'remote') {
-    return 'remote picture；Do not automatically read local dimensions';
+    return 'remote picture;Do not automatically read local dimensions';
   }
 
   const originLabel = getAdminImageOriginLabel(meta.origin);
@@ -155,7 +155,7 @@ export const fetchAdminImageJson = async (url: string, fallbackMessage = 'Image 
 
   const errors = getAdminImageResponseErrors(payload);
   if (!response.ok) {
-    throw new Error(errors[0] ?? `${fallbackMessage}（HTTP ${response.status}）`);
+    throw new Error(errors[0] ?? `${fallbackMessage}(HTTP ${response.status})`);
   }
 
   throw new Error(errors[0] ?? fallbackMessage);

@@ -90,11 +90,11 @@ const extractCreateInput = (body: unknown): CreateInput => {
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentCollectionKey(rawCollection)) {
-    const message = `Not supported content collection：${rawCollection}；Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
+    const message = `Not supported content collection: ${rawCollection};Only supports ${ADMIN_CONTENT_COLLECTION_KEYS.join(' / ')}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else if (!isAdminContentCreatableCollectionKey(rawCollection)) {
-    const message = `current collection Currently does not support new additions：${rawCollection}`;
+    const message = `current collection Currently does not support new additions: ${rawCollection}`;
     errors.push(message);
     issues.push({ path: 'collection', message });
   } else {
@@ -106,7 +106,7 @@ const extractCreateInput = (body: unknown): CreateInput => {
     errors.push(message);
     issues.push({ path: 'entryId', message });
   } else if (collection === 'bits' && hasEntryId) {
-    const message = 'bits Added by date derived entryId，Do not accept manual entryId';
+    const message = 'bits Added by date derived entryId, Do not accept manual entryId';
     errors.push(message);
     issues.push({ path: 'entryId', message });
   }
@@ -168,7 +168,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   }
 
   const bodyResult = await readAdminJsonRequestBody(request, {
-    emptyBodyError: 'The request body is empty，Please confirm it has been sent JSON string'
+    emptyBodyError: 'The request body is empty, Please confirm it has been sent JSON string'
   });
   if (!bodyResult.ok) {
     return createJsonErrorResponse(bodyResult.status, [bodyResult.error]);
@@ -221,7 +221,7 @@ export const POST: APIRoute = async ({ request, url }) => {
       ], {
         beforeWrite: async () => {
           if (await fileExists(plan.sourcePath)) {
-            throw new AdminContentEntryResolutionError('invalid-entry-id', `Source file already exists：${plan.relativePath}`);
+            throw new AdminContentEntryResolutionError('invalid-entry-id', `Source file already exists: ${plan.relativePath}`);
           }
           await ensureAdminContentCreateParentDirectory(plan);
         }
@@ -249,7 +249,7 @@ export const POST: APIRoute = async ({ request, url }) => {
       if (errorResponse) return errorResponse;
 
       console.error('[astro-whono] Failed to create admin content entry:', error);
-      return createJsonErrorResponse(500, ['Failed to add content file，Please check local file permissions or logs']);
+      return createJsonErrorResponse(500, ['Failed to add content file, Please check local file permissions or logs']);
     }
   });
 };

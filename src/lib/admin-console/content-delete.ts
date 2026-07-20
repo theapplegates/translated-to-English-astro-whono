@@ -37,8 +37,8 @@ export class AdminContentDeleteConfirmationError extends Error {
     payload: AdminContentEditorPayload
   ) {
     super(code === 'revision-conflict'
-      ? 'Content file detected externally updated，Deletion refused，Please refresh the list before proceeding.'
-      : 'Detected that the content file path is inconsistent with the confirmation，Deletion refused，Please refresh the list before proceeding.');
+      ? 'Content file detected externally updated, Deletion refused, Please refresh the list before proceeding.'
+      : 'Detected that the content file path is inconsistent with the confirmation, Deletion refused, Please refresh the list before proceeding.');
     this.name = 'AdminContentDeleteConfirmationError';
     this.code = code;
     this.payload = payload;
@@ -87,7 +87,7 @@ const getTrashDestinationPath = async (
   const pathSegments = sourceRelativePath.split('/').filter(Boolean);
   const timestamp = formatTrashTimestamp(date);
 
-  // Keep original relative path，You can move files back directly during recovery src/content 下。
+  // Keep original relative path, You can move files back directly during recovery src/content below.
   for (let index = 1; index <= 999; index += 1) {
     const bucket = index === 1 ? timestamp : `${timestamp}-${index}`;
     const bucketPath = path.join(projectRoot, '.trash', 'content', bucket);
@@ -106,7 +106,7 @@ export const moveAdminContentEntryToTrash = async (
   const relativePath = toRelativeProjectPath(sourcePath);
   const expectedPrefix = `src/content/${collection}/`;
   if (!relativePath.startsWith(expectedPrefix)) {
-    throw new Error(`refuse to move content Files outside the root directory：${relativePath}`);
+    throw new Error(`refuse to move content Files outside the root directory: ${relativePath}`);
   }
 
   const destinationPath = await getTrashDestinationPath(relativePath);

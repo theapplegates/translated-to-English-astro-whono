@@ -42,18 +42,18 @@ const {
 } = getThemeSettings();
 
 const pageTitleText = page.bits.title || 'Whisper';
-const pageTitleParts = [pageTitleText, currentPage > 1 ? `第 ${currentPage} 页` : null].filter(Boolean);
+const pageTitleParts = [pageTitleText, currentPage > 1 ? `Page ${currentPage}` : null].filter(Boolean);
 const pageTitle = pageTitleParts.join(' · ');
 const subtitleText = joinPageSubtitleText(
   page.bits.subtitle,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
 );
 const pageDescription = joinPageSubtitleText(
-  `${pageTitleText}list`,
+  `${pageTitleText} list`,
   page.bits.subtitle,
-  `共 ${resultCount} Whispers`,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
-) ?? `${pageTitleText}list`;
+  `${resultCount} whispers`,
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
+) ?? `${pageTitleText} list`;
 
 const primaryYearOptions = yearOptions.slice(0, MAX_PRIMARY_BITS_FILTER_YEARS);
 const overflowYearOptions = yearOptions.slice(MAX_PRIMARY_BITS_FILTER_YEARS);
@@ -118,7 +118,7 @@ const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
               type="button"
               data-bits-year-item
               data-bits-year={option.value}
-              aria-label={`filter ${option.value} Nian murmurs，共 ${option.count} 条`}
+              aria-label={`filter ${option.value} year whispers, ${option.count} entries`}
               aria-pressed="false"
             >
               {option.value}
@@ -151,11 +151,11 @@ const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
                       type="button"
                       data-bits-year-menu-item
                       data-bits-year={option.value}
-                      aria-label={`filter ${option.value} Nian murmurs，共 ${option.count} 条`}
+                      aria-label={`filter ${option.value} year whispers, ${option.count} entries`}
                       aria-pressed="false"
                     >
                       <span class="bits-year-menu__item-label">{option.value}</span>
-                      <span class="bits-year-menu__item-count">{option.count} 条</span>
+                      <span class="bits-year-menu__item-count">{option.count}</span>
                     </button>
                   ))}
                 </div>
@@ -172,7 +172,7 @@ const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
             <input
               id="bits-search"
               type="search"
-              placeholder="search：keywords / Label"
+              placeholder="search: keywords / Label"
               autocomplete="off"
               enterkeyhint="search"
               aria-controls="bits-search-results-panel"
@@ -258,7 +258,7 @@ const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
         display: none !important;
       }
     </style>
-    <p class="bits-noscript-note">search、Required for year filtering and draft generation functions JavaScript，Currently only list browsing is reserved。</p>
+    <p class="bits-noscript-note">search, Required for year filtering and draft generation functions JavaScript, Currently only list browsing is reserved.</p>
   </noscript>
 
   <div id="bits-draft-root"></div>
@@ -359,7 +359,7 @@ const katexStylesheetAttrs = { [MARKDOWN_MATH_STYLESHEET_DATA_ATTR]: 'true' };
         setLoadStatus('');
         controller.open({ opener: openBtn });
       } catch {
-        setLoadStatus('Failed to load the broken thoughts tool，Please try again。', 'error');
+        setLoadStatus('Failed to load the broken thoughts tool, Please try again.', 'error');
       } finally {
         setLoading(false);
       }

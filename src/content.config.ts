@@ -103,7 +103,7 @@ const bitsImage = z.object({
       if (!normalizeBitsImageSource(value)) {
         ctx.addIssue({
           code: 'custom',
-          message: 'images[].src only allowed public/** Relative image path under or https:// remote URL，Don't bring it public/、Don't take / beginning，Also don't use http、..、?、#'
+          message: 'images[].src only allows a relative path under public/** or an https:// remote URL. Do not include public/, do not start with /, and do not use http, .., ?, or #'
         });
       }
     })
@@ -120,7 +120,7 @@ const bitsAuthorAvatar = z
     if (normalized === undefined) {
       ctx.addIssue({
         code: 'custom',
-        message: 'author.avatar Only relative image paths allowed（For example author/avatar.webp），Don't bring it public/、Don't take / beginning，Also don't use URL、..、?、#'
+        message: 'author.avatar only allows a relative image path (e.g. author/avatar.webp). Do not include public/, do not start with /, and do not use a URL, .., ?, or #'
       });
       return;
     }

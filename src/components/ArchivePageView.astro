@@ -37,20 +37,20 @@ const {
 } = getThemeSettings();
 
 const pageTitleText = page.archive.title || 'Archive';
-const pageTitleParts = [pageTitleText, currentTag ? `#${currentTag.label}` : null, currentPage > 1 ? `第 ${currentPage} 页` : null]
+const pageTitleParts = [pageTitleText, currentTag ? `#${currentTag.label}` : null, currentPage > 1 ? `Page ${currentPage}` : null]
   .filter(Boolean);
 const pageTitle = pageTitleParts.join(' · ');
 const subtitleText = joinPageSubtitleText(
   page.archive.subtitle,
-  `共 ${resultCount} content`,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
+  `${resultCount} entries`,
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
 );
 const pageDescription = joinPageSubtitleText(
-  currentTag ? `Archive tag #${currentTag.label}` : `${pageTitleText}list`,
+  currentTag ? `Archive tag #${currentTag.label}` : `${pageTitleText} list`,
   page.archive.subtitle,
-  `共 ${resultCount} content`,
-  totalPages > 1 ? `第 ${currentPage} / ${totalPages} 页` : null
-) ?? `${pageTitleText}list`;
+  `${resultCount} entries`,
+  totalPages > 1 ? `Page ${currentPage} / ${totalPages}` : null
+) ?? `${pageTitleText} list`;
 const groups = groupByUtcYear(items, (entry) => entry.data.date);
 const scopeRootPath = '/archive/';
 const fallbackListId = 'archive-tag-list';

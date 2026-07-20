@@ -1,5 +1,5 @@
 /* Admin Shell
-   负责后台共享 tokens、页面壳、状态、按钮、提示块、只读卡片与真实路由导航。
+   Handles admin shared tokens, page shell, status, buttons, callouts, read-only cards, and real route navigation.
 */
 
 :root {
@@ -1326,7 +1326,7 @@
   box-shadow: var(--admin-btn-tool-active-shadow, none);
 }
 
-/* Admin 内部窄窗口可用性规则；公开站点 shell/sidebar 断点已在 layout.css 中排除 Admin。 */
+/* Admin Internal narrow-window usability rules; the public site shell/sidebar Breakpoint already layout.css excluded from Admin. */
 @media (max-width: 900px) {
   .page-header--admin {
     flex-direction: row;

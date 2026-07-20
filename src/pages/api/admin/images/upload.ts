@@ -86,7 +86,7 @@ export const POST: APIRoute = async ({ request, url }) => {
   const errors: string[] = [];
 
   if (!isAdminContentImageUploadCollectionKey(collection)) {
-    errors.push('Currently, only essay text images are supported.、Upload the main text picture of the note or the accompanying picture of the quotation');
+    errors.push('Currently, only essay text images are supported., Upload the main text picture of the note or the accompanying picture of the quotation');
   }
   if (!entryId) {
     errors.push('Upload request is missing entryId');
@@ -120,7 +120,7 @@ export const POST: APIRoute = async ({ request, url }) => {
       console.error('[astro-whono] Failed to upload admin image:', error);
       return createJsonResponse(500, {
         ok: false,
-        errors: ['Image upload failed，Please check local file permissions or logs']
+        errors: ['Image upload failed, Please check local file permissions or logs']
       });
     }
   });

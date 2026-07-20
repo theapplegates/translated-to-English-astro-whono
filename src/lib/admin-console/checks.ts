@@ -81,22 +81,22 @@ const ADMIN_CHECKS_CATEGORIES = [
   {
     id: 'settings',
     label: 'Settings',
-    description: 'examine settings Whether the file is missing fields or has an abnormal structure。'
+    description: 'examine settings Whether the file is missing fields or has an abnormal structure.'
   },
   {
     id: 'essay-slug',
     label: 'Essay Slug',
-    description: 'examine slug Format、Duplicate and reserved routing conflicts。'
+    description: 'examine slug Format, Duplicate and reserved routing conflicts.'
   },
   {
     id: 'bits-images',
     label: 'Bits picture',
-    description: 'Check whether the avatar and image paths are valid，Does the referenced file exist?。'
+    description: 'Check whether the avatar and image paths are valid, Does the referenced file exist?.'
   },
   {
     id: 'tag',
     label: 'Tags',
-    description: 'Check label key Whether the route can be generated normally。'
+    description: 'Check label key Whether the route can be generated normally.'
   }
 ] as const satisfies readonly {
   id: AdminChecksCategoryId;
@@ -118,7 +118,7 @@ const getProjectRoot = (): string =>
 const toRelativeProjectPath = (filePath: string): string =>
   path.relative(getProjectRoot(), filePath).replace(/\\/g, '/');
 
-// Checks Generate only lightweight targeting URL，not dependent on Content Console heavy data layer。
+// Checks Generate only lightweight targeting URL, not dependent on Content Console heavy data layer.
 const resolveContentHref = (collection: AdminContentCollectionKey, entryId: string): string =>
   getAdminContentEntryListHref(collection, { entryId });
 
@@ -211,7 +211,7 @@ const createSettingsIssues = (): AdminChecksIssue[] => {
 };
 
 const createSourceReadIssue = (category: AdminChecksCategoryId, source: AdminContentSourceRecord): AdminChecksIssue =>
-  createIssue(category, 'frontmatter Parsing failed', 'current file frontmatter Unable to parse，This check is not performed in the background。', {
+  createIssue(category, 'frontmatter Parsing failed', 'current file frontmatter Unable to parse, This check is not performed in the background.', {
     relativePath: source.relativePath,
     collection: source.collection,
     entryId: source.entryId,
@@ -243,8 +243,8 @@ const createEssaySlugIssues = (sources: readonly AdminContentSourceRecord[]): Ad
           'essay-slug',
           'essay public slug illegal',
           explicitSlug
-            ? `frontmatter.slug "${explicitSlug}" Not legal lowercase kebab-case。`
-            : `Default public by content source path slug "${publicSlug}" illegal，Please adjust the path or set it explicitly slug。`,
+            ? `frontmatter.slug "${explicitSlug}" Not legal lowercase kebab-case.`
+            : `Default public by content source path slug "${publicSlug}" illegal, Please adjust the path or set it explicitly slug.`,
           {
             relativePath: source.relativePath,
             fieldPath: 'slug',
@@ -262,7 +262,7 @@ const createEssaySlugIssues = (sources: readonly AdminContentSourceRecord[]): Ad
         createIssue(
           'essay-slug',
           'essay public slug hit-and-hold routing',
-          `public slug "${publicSlug}" Will meet with /archive 或 /essay reserved route conflict under。`,
+          `public slug "${publicSlug}" Will meet with /archive or /essay reserved route conflict under.`,
           {
             relativePath: source.relativePath,
             fieldPath: 'slug',
@@ -292,7 +292,7 @@ const createEssaySlugIssues = (sources: readonly AdminContentSourceRecord[]): Ad
         createIssue(
           'essay-slug',
           'essay public slug conflict',
-          `public slug "${publicSlug}" Already used by other essay occupy：${otherEntryIds.join(', ')}。`,
+          `public slug "${publicSlug}" Already used by other essay occupy: ${otherEntryIds.join(', ')}.`,
           {
             relativePath: source.relativePath,
             fieldPath: 'slug',
@@ -326,14 +326,14 @@ const createBitsImagesIssues = (sources: readonly AdminContentSourceRecord[]): A
           createIssue(
             'bits-images',
             'bits.author.avatar Illegal path',
-            'author.avatar Only relative image paths allowed，Don't bring it public/、/、URL、..、? 或 #。',
+            'author.avatar only allows a relative image path; do not include public/, start with /, or use a URL, .., ?, or #.',
             {
               relativePath: source.relativePath,
               fieldPath: 'author.avatar',
               collection: source.collection,
               entryId: source.entryId,
               href: resolveContentHref(source.collection, source.entryId),
-              detail: `current value：${rawAvatar}`
+              detail: `current value: ${rawAvatar}`
             }
           )
         );
@@ -344,7 +344,7 @@ const createBitsImagesIssues = (sources: readonly AdminContentSourceRecord[]): A
             createIssue(
               'bits-images',
               'bits.author.avatar The file pointed to does not exist',
-              `author.avatar The local file pointed to does not exist：${avatarFilePath}`,
+              `author.avatar The local file pointed to does not exist: ${avatarFilePath}`,
               {
                 relativePath: source.relativePath,
                 fieldPath: 'author.avatar',
@@ -369,14 +369,14 @@ const createBitsImagesIssues = (sources: readonly AdminContentSourceRecord[]): A
           createIssue(
             'bits-images',
             'bits.images[*].src Illegal path',
-            'bits.images[*].src only allowed public/** Relative image path under or https:// remote URL。',
+            'bits.images[*].src only allowed public/** Relative image path under or https:// remote URL.',
             {
               relativePath: source.relativePath,
               fieldPath,
               collection: source.collection,
               entryId: source.entryId,
               href: resolveContentHref(source.collection, source.entryId),
-              detail: `current value：${image.src}`
+              detail: `current value: ${image.src}`
             }
           )
         );
@@ -390,7 +390,7 @@ const createBitsImagesIssues = (sources: readonly AdminContentSourceRecord[]): A
             createIssue(
               'bits-images',
               'bits.images[*].src The file pointed to does not exist',
-              `bits.images[*].src The local file pointed to does not exist：${imageFilePath}`,
+              `bits.images[*].src The local file pointed to does not exist: ${imageFilePath}`,
               {
                 relativePath: source.relativePath,
                 fieldPath,
@@ -429,14 +429,14 @@ const createTagIssues = (sources: readonly AdminContentSourceRecord[]): AdminChe
         createIssue(
           'tag',
           'tag Routing key is not available',
-          `tag "${tag}" Routing key obtained after normalization ${key ? `"${key}"` : '(empty)'} Not available for archive tag routing。`,
+          `tag "${tag}" Routing key obtained after normalization ${key ? `"${key}"` : '(empty)'} Not available for archive tag routing.`,
           {
             relativePath: source.relativePath,
             fieldPath: `tags[${index}]`,
             collection: source.collection,
             entryId: source.entryId,
             href: resolveContentHref(source.collection, source.entryId),
-            detail: `Standardized labels：${normalizedLabel || '(empty)'}`
+            detail: `Standardized labels: ${normalizedLabel || '(empty)'}`
           }
         )
       );

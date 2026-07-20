@@ -12,7 +12,7 @@
   },
   "articleMeta": {
     "showDate": true,
-    "dateLabel": "Posted in：",
+    "dateLabel": "Posted in: ",
     "showTags": true,
     "showWordCount": true,
     "showReadingTime": true

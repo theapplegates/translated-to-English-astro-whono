@@ -63,11 +63,11 @@ const getSafeImageFileName = (fileName: string): string => {
 
 const assertUploadFile = (file: File): void => {
   if (file.size <= 0) {
-    throw new AdminImageUploadError('Image file is empty，Please select again');
+    throw new AdminImageUploadError('Image file is empty, Please select again');
   }
 
   if (file.size > ADMIN_IMAGE_UPLOAD_MAX_BYTES) {
-    throw new AdminImageUploadError('Pictures over 12MB，Please compress before uploading', 413);
+    throw new AdminImageUploadError('Pictures over 12MB, Please compress before uploading', 413);
   }
 
   const type = file.type.trim().toLowerCase();
@@ -117,7 +117,7 @@ const writeUniqueImageFile = async (
     }
   }
 
-  throw new AdminImageUploadError('Unable to generate usable file name，Please rename the image before uploading it', 409);
+  throw new AdminImageUploadError('Unable to generate usable file name, Please rename the image before uploading it', 409);
 };
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>

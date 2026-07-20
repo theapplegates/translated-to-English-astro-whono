@@ -100,7 +100,7 @@ const bootstrapText = imagesDevState
               <div class="admin-images-browser__toolbar-main">
                 <h2 class="admin-overview-card__title">Picture management</h2>
                 <div class="admin-images-browser__toolbar-primary">
-                  <span class="admin-images-browser__toolbar-separator" aria-hidden="true">｜</span>
+                  <span class="admin-images-browser__toolbar-separator" aria-hidden="true">|</span>
 
                   <div class="admin-images-browser__toolbar-search">
                     <button
@@ -147,7 +147,7 @@ const bootstrapText = imagesDevState
                           inputmode="search"
                           tabindex={hasInitialQuery ? undefined : '-1'}
                           value={rawQuery}
-                          placeholder="Search image path、file name or owner"
+                          placeholder="Search image path, file name or owner"
                           autocomplete="off"
                         />
                       </label>
@@ -230,7 +230,7 @@ const bootstrapText = imagesDevState
 
           <article class="admin-images-browser__results">
             <ul id="admin-images-result-list" class="admin-images-browser__items" data-view="grid"></ul>
-            <p id="admin-images-empty" class="admin-content-empty" hidden>No matching pictures found。</p>
+            <p id="admin-images-empty" class="admin-content-empty" hidden>No matching pictures found.</p>
 
             <nav class="admin-images-browser__pager" aria-label="Gallery pagination">
               <button
@@ -269,7 +269,7 @@ const bootstrapText = imagesDevState
         </section>
       ) : (
         <AdminReadonlyNotice>
-          If you need to browse the gallery or copy the resource path，Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance。
+          If you need to browse the gallery or copy the resource path, Please run it locally <code translate="no">npm run dev</code> Then enter from this entrance.
         </AdminReadonlyNotice>
       )
     }

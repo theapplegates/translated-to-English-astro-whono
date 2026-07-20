@@ -100,7 +100,7 @@ export const validateAdminJsonWriteRequest = (
   if (!requestOrigin) {
     return {
       status: 403,
-      error: `${actionLabel}Request is missing source id，Only allow commits from the same origin as the current development site`
+      error: `${actionLabel}Request is missing source id, Only allow commits from the same origin as the current development site`
     };
   }
 
@@ -136,7 +136,7 @@ export const validateAdminFormDataWriteRequest = (
   if (!requestOrigin) {
     return {
       status: 403,
-      error: `${actionLabel}Request is missing source id，Only allow commits from the same origin as the current development site`
+      error: `${actionLabel}Request is missing source id, Only allow commits from the same origin as the current development site`
     };
   }
 

@@ -12,16 +12,16 @@ type CreateEmojiPickerOptions = {
 
 const emojiPickerI18n: I18n = {
   categoriesLabel: 'Classification',
-  emojiUnsupportedMessage: 'The current browser does not support color emoji。',
+  emojiUnsupportedMessage: 'The current browser does not support color emoji.',
   favoritesLabel: 'Recently used',
   loadingMessage: 'loading...',
-  networkErrorMessage: 'Unable to load emoji data。',
+  networkErrorMessage: 'Unable to load emoji data.',
   regionLabel: 'Expression selector',
-  searchDescription: 'When there are search results，Use the up and down arrow keys to select，Press enter to insert。',
+  searchDescription: 'When there are search results, Use the up and down arrow keys to select, Press enter to insert.',
   searchLabel: 'Search emoticons',
   searchResultsLabel: 'Search results',
-  skinToneDescription: 'After unfolding, you can use the up and down arrow keys to select skin color.，Press Enter to confirm。',
-  skinToneLabel: 'Choose skin tone，Currently {skinTone}',
+  skinToneDescription: 'After unfolding, you can use the up and down arrow keys to select skin color., Press Enter to confirm.',
+  skinToneLabel: 'Choose skin tone, Currently {skinTone}',
   skinTonesLabel: 'color',
   skinTones: ['default', 'light color', 'medium light color', 'medium', 'medium dark', 'Dark'],
   categories: {

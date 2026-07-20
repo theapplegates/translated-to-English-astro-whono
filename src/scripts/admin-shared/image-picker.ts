@@ -151,7 +151,7 @@ export const createAdminImagePicker = (root: ParentNode = document): AdminImageP
   if (missingEndpoints.length > 0) {
     reportAdminDomSetupError({
       prefix: '[admin-images-picker]',
-      message: 'Image picker missing necessary endpoint Configuration，Client script has stopped initializing。',
+      message: 'Image picker missing necessary endpoint Configuration, Client script has stopped initializing.',
       missing: missingEndpoints,
       statusEl
     });
@@ -339,7 +339,7 @@ export const createAdminImagePicker = (root: ParentNode = document): AdminImageP
     if (!items.length) {
       const empty = document.createElement('li');
       empty.className = 'admin-images-picker__empty';
-      empty.textContent = 'No optional images were matched。';
+      empty.textContent = 'No optional images were matched.';
       resultsEl.appendChild(empty);
       return;
     }

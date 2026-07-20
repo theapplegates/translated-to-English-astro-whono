@@ -1,5 +1,5 @@
 /* Admin Content Editor Shared Form Surfaces
-   保留只读详情，以及当前 workspace 仍复用的字段与错误文本。
+   keeps read-only details, and the current workspace fields and error text still being reused.
 */
 
 .admin-content-readonly {

@@ -1,6 +1,6 @@
 ---
-title: Admin Console Quick guide
-description: introduce astro-whono local Admin Console entrance、Functions of each page。
+title: Admin Console Quick Guide
+description: An introduction to the astro-whono local Admin Console entry points and what each page does.
 badge: guide
 date: 2026-04-24
 tags: [ "Admin Console", "guide" ]
@@ -48,73 +48,74 @@ draft: false
   breakpoints="50, 319, 439, 519, 524, 690, 703, 727, 777, 825, 855, 864, 901, 938, 982, 988, 1000"
   picture-class="responsive-picture"
 />
-Admin Console `/admin/`It is the local backend entrance，used in fork、clone Or take over site configuration and content maintenance after self-hosting。
 
-it is not independent CMS，The save operation will write back the configuration or content files in the warehouse，Therefore suitable for and Git used together：You can see before and after changes diff，When it is necessary to roll back, it will be processed as a normal project file.。
+The Admin Console at `/admin/` is the local backend entry point, used after forking, cloning, or self-hosting to maintain site configuration and content.
 
-:::note[local tools]
-Admin Console Provides writing capabilities only in development environment。<br>
-The production environment retains at most the read-only site overview page；`/api/admin/*` Only serve the local backend，inaction publicity API。
+It is not a standalone CMS. Saving writes back to the configuration or content files inside the repository, so it pairs well with Git: you can review diffs before and after changes, and roll back as normal project files when needed.
+
+:::note[Local tools]
+The Admin Console's editing features are only available in the development environment.<br>
+Production keeps at most a read-only site overview page; `/api/admin/*` serves only the local backend and is not a public API.
 :::
 
 ## Quick entry
 
-Start a project locally：
+Start the project locally:
 
 ```bash
 npm install
 npm run dev
 ```
 
-The development server runs by default on `http://localhost:4321/`，If the port has been modified，please change `4321` Replace it with your actual port。
+The dev server runs at `http://localhost:4321/` by default; if you changed the port, replace `4321` with your actual port.
 
-| Entrance | page | Main purpose |
+| Entry | Page | Main purpose |
 | :---: | :---: | :--- |
-| `/admin/` | Site Overview | View site overview、Content structure、Recent articles, etc. |
-| `/admin/theme/` | Theme Console | Edit site information、sidebar、front page、Internal page copywriting |
+| `/admin/` | Site Overview | View the site overview, content structure, and recent articles |
+| `/admin/theme/` | Theme Console | Edit site info, sidebar, homepage, and inner-page copy |
 | `/admin/content/` | Content Console | Article management and visual writing |
-| `/admin/images/` | Images Console | Browse image resources，Copy available paths |
-| `/admin/checks/` | Checks Console | View structured diagnostics，Do pre-release checks |
-| `/admin/data/` | Data Console | Import and export theme settings，Easy migration and backup |
+| `/admin/images/` | Images Console | Browse image resources and copy usable paths |
+| `/admin/checks/` | Checks Console | View structured diagnostics and run pre-release checks |
+| `/admin/data/` | Data Console | Import and export theme settings for migration and backup |
 
-## main page
+## Main pages
 
 ### 📈 Site Overview
 
-[Site Overview](/admin/) It is the backend homepage，Number of site contents that can be viewed、Recent updates、Backstage entrance, etc.（The entrance is only visible to the development environment）。
+[Site Overview](/admin/) is the backend home, showing content counts, recent updates, and admin entry points (the entries are visible only in the development environment).
 
-This page is optional and open to visitors，受 Theme Console within the page Admin Overview switch control。
+This page is optional and can be shown to visitors, controlled by the "Admin Overview" toggle inside the Theme Console.
 
 ### 🛠️ Theme Console
 
-Theme Console Manage topic-level configuration，Convenient in fork 或 clone Quickly adjust site basic settings。
+The Theme Console manages theme-level configuration, making it easy to adjust basic site settings after forking or cloning.
 
-For details, see [Theme Console Configuration Guide](/archive/theme-console-guide/)。
+See the [Theme Console configuration guide](/archive/theme-console-guide/) for details.
 
 ### 📝 Content Console
 
-Content Console It is the entrance to content management and visual writing，Can centrally view and maintain the writing content of the site。
+The Content Console is the entry point for content management and visual writing, where you can review and maintain the site's written content in one place.
 
-For details, see [Content Console User Guide](/archive/content-console-guide/)。
+See the [Content Console user guide](/archive/content-console-guide/) for details.
 
 ### 🖼️ Images Console
 
-Images Console Browsable image resources、Check image information，and copy the path that can be used for configuration or content fields。
+The Images Console lets you browse image resources, inspect image info, and copy paths for use in configuration or content fields.
 
-Currently positioned close to the resource browser，Compression is not supported yet、Delete or replace files。
-When you need to change the picture，First put the pictures in the project agreed directory，Go back to the corresponding page to select or fill in the path.。
+It is currently a resource browser: it does not compress, delete, or replace files. When you need to change an image, put it in the agreed project directory first, then return to the relevant page to select or fill in the path.
 
 ### ✅ Checks Console
 
-Checks Console Do pre-release checks，will put the content、Configuration、Image references and agreed risks are organized into diagnostic results。
+The Checks Console runs pre-release checks, organizing content, configuration, image references, and agreed-upon risks into diagnostic results.
 
-This page does not modify files directly。After discovering the problem，back again Theme、Content Or process it in the source code。
+It does not modify files directly. When it finds an issue, go back to Theme, Content, or the source code to address it.
 
 ### 📤 Data Console
 
-Data Console Responsible for importing or exporting theme settings。Export is suitable for migration or backup；The import will be pre-checked first.，Confirm writing again。
+The Data Console handles importing or exporting theme settings. Export is for migration or backup; import runs a pre-check first and writes only after confirmation.
 
-it deals with Theme Console Managed topic configuration data，Do not process article content。
+It works with the theme configuration data managed by the Theme Console, not with article content.
 
 ---
-These are the current Admin Console The main entrance and functions of。If you have more ideas or suggestions，Submissions are welcome Issue。
+
+Those are the Admin Console's main entries and features. If you have more ideas or suggestions, please open an Issue.

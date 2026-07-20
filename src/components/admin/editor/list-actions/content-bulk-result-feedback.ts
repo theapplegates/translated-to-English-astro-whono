@@ -4,8 +4,8 @@ import {
 } from '../../../../lib/admin-console/content-bulk';
 import { isRecord } from '../../../../scripts/admin-content/entry-transport';
 
-// After successful batch writing，The result prompt will be restored after the content list is refreshed.。
-// Snapshot retained until user closes prompt，Avoid result loss caused by continuous refresh；Expired snapshots are automatically ignored。
+// After successful batch writing, The result prompt will be restored after the content list is refreshed..
+// Snapshot retained until user closes prompt, Avoid result loss caused by continuous refresh;Expired snapshots are automatically ignored.
 
 export type ContentBulkResultDialogKind = 'status' | 'delete' | 'export';
 
@@ -60,7 +60,7 @@ export const clearContentBulkResultDialog = (): void => {
   try {
     window.sessionStorage.removeItem(CONTENT_BULK_RESULT_DIALOG_STORAGE_KEY);
   } catch {
-    // When storage is unavailable, only the result prompt after refresh is affected.。
+    // When storage is unavailable, only the result prompt after refresh is affected..
   }
 };
 
@@ -91,6 +91,6 @@ export const storeContentBulkResultDialog = (dialog: ContentBulkResultDialog): v
       JSON.stringify(storedDialog)
     );
   } catch {
-    // Storage failure only affects the result prompt after refreshing，Does not affect completed batch writes。
+    // Storage failure only affects the result prompt after refreshing, Does not affect completed batch writes.
   }
 };

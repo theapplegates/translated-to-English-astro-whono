@@ -52,7 +52,7 @@ const getNextThemeMode = (mode: ThemeMode): ThemeMode => {
 
 const getThemeModeLabel = (mode: ThemeMode, theme: Theme): string => {
   if (mode === 'system') {
-    return `Follow the system（${theme === 'dark' ? 'dark mode' : 'light mode'}）`;
+    return `Follow the system(${theme === 'dark' ? 'dark mode' : 'light mode'})`;
   }
 
   return theme === 'dark' ? 'dark mode' : 'light mode';
@@ -93,7 +93,7 @@ const listenSystemThemeChange = (listener: () => void) => {
     return;
   }
 
-  // Compatible with older versions Safari / WebView 的 MediaQueryList Listening interface。
+  // Compatible with older versions Safari / WebView  MediaQueryList Listening interface.
   const legacyColorSchemeMq = colorSchemeMq as unknown as LegacyMediaQueryList;
   legacyColorSchemeMq.addListener?.(listener);
 };

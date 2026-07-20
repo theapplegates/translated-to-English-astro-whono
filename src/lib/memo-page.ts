@@ -1,8 +1,8 @@
 export const LEGACY_MEMO_INTRO_LINES = [
-  'time flows through us，Like the wind passing through the cloister。',
-  'There are always some moments，Carrying a special atmosphere or light，Stays briefly and then dissipates。',
-  'some feelings，Cannot be carried by the lens，Some memories are difficult to capture in images。',
-  'Maybe，Leave a text backup for the moment’s feelings，It is the gentlest but most effective way to resist forgetting。'
+  'time flows through us, Like the wind passing through the cloister.',
+  'There are always some moments, Carrying a special atmosphere or light, Stays briefly and then dissipates.',
+  'some feelings, Cannot be carried by the lens, Some memories are difficult to capture in images.',
+  'Maybe, Leave a text backup for the moment’s feelings, It is the gentlest but most effective way to resist forgetting.'
 ] as const;
 
 export type MemoMarkdownSections = {

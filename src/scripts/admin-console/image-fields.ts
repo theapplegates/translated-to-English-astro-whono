@@ -53,7 +53,7 @@ const FIELD_CONFIGS: readonly ThemeImageFieldConfig[] = [
     inputId: 'page-bits-author-avatar',
     buttonSelector: '[data-admin-images-open="page.bits.defaultAuthor.avatar"]',
     pickerTitle: 'replace Bits Author avatar',
-    pickerDescription: 'Only lists writable directly page.bits.defaultAuthor.avatar of local public/** resource。',
+    pickerDescription: 'Only lists writable directly page.bits.defaultAuthor.avatar of local public/** resource.',
     pickerResetLabel: 'Clear avatar',
     pickerResetStatus: 'Cleared Bits Default avatar'
   }
@@ -111,8 +111,8 @@ const setPreview = (
       return;
     }
 
-    // DOM sink the last frontier before：用 URL Constructor reparse，Cut off the flow of tainted data from input text。
-    // This is defense in depth with upstream verification.，also let CodeQL js/xss-through-dom can identify the sanitizer。
+    // DOM sink the last frontier before: use URL Constructor reparse, Cut off the flow of tainted data from input text.
+    // This is defense in depth with upstream verification., also let CodeQL js/xss-through-dom can identify the sanitizer.
     let reparsedPreviewSrc: string | null = null;
     try {
       if (safePreviewSrc.startsWith('https://')) {
@@ -335,7 +335,7 @@ export const createAdminThemeImageFields = ({
           binding.input.value = item.value;
           binding.input.dispatchEvent(new Event('input', { bubbles: true }));
           binding.input.dispatchEvent(new Event('change', { bubbles: true }));
-          setStatus('ok', `Local image selected：${item.value}`);
+          setStatus('ok', `Local image selected: ${item.value}`);
         }
       };
 

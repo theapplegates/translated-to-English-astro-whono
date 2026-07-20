@@ -74,14 +74,14 @@ export const DEFAULT_EDITOR_DISPLAY_PREFERENCE: EditorDisplayPreference = {
   lineNumbers: false,
   markdownHighlightTheme: DEFAULT_MARKDOWN_HIGHLIGHT_THEME
 };
-// Take precedence if there is no editor default or explicit preference split，Narrow container visual fallback by effective view derived。
+// Take precedence if there is no editor default or explicit preference split, Narrow container visual fallback by effective view derived.
 export const DEFAULT_EDITOR_LAYOUT_INTENT: EditorLayoutMode = 'split';
-// 940px It's double pane Minimum stable width after tool button remains readable；CSS only consume data-effective-view。
+// 940px It's double pane Minimum stable width after tool button remains readable;CSS only consume data-effective-view.
 export const EDITOR_SPLIT_MIN_INLINE_SIZE = 940;
 export const EDITOR_OUTLINE_VISIBLE_MIN_INLINE_SIZE = {
-  // The table of contents is an auxiliary navigation；split + both Allows slight compression of the main workspace，Lower than the visual acceptance line before closing。
+  // The table of contents is an auxiliary navigation;split + both Allows slight compression of the main workspace, Lower than the visual acceptance line before closing.
   splitBoth: 996,
-  // single zone/stacked Only one main content panel，Table of contents can be closed later than in dual-column mode。
+  // single zone/stacked Only one main content panel, Table of contents can be closed later than in dual-column mode.
   linear: 900
 } as const;
 export const EDITOR_SCROLLBAR_VISIBILITY_TIMEOUT_MS = 800;
@@ -237,7 +237,7 @@ export const getEditorEditViewToggleLabel = ({
   editorViewMode === 'edit'
     ? 'Cancel edit view only'
     : splitBothIsCompact
-      ? 'Current width of display editing area；Click Pin to edit only'
+      ? 'Current width of display editing area;Click Pin to edit only'
       : 'Show editing area only';
 
 export const getEditorPreviewViewToggleLabel = (editorViewMode: EditorViewMode): string =>
@@ -391,7 +391,7 @@ export const storeEditorLayout = (storageKey: string, layoutMode: EditorLayoutMo
   try {
     window.localStorage.setItem(storageKey, layoutMode);
   } catch {
-    // Layout preferences only improve the experience，Does not affect the main editing process。
+    // Layout preferences only improve the experience, Does not affect the main editing process.
   }
 };
 
@@ -484,7 +484,7 @@ export const storeEditorDisplayPreference = (storageKey: string, state: EditorDi
   try {
     window.localStorage.setItem(storageKey, JSON.stringify(state));
   } catch {
-    // Display preferences only improve the editing experience，Does not affect the main text editing process。
+    // Display preferences only improve the editing experience, Does not affect the main text editing process.
   }
 };
 
@@ -493,7 +493,7 @@ export const storeEditorSidePanelPreference = (storageKey: string, state: Editor
   try {
     window.localStorage.setItem(storageKey, JSON.stringify(state));
   } catch {
-    // Right side auxiliary panel preference only improves cross-article experience，Does not affect the main editing process。
+    // Right side auxiliary panel preference only improves cross-article experience, Does not affect the main editing process.
   }
 };
 
@@ -502,7 +502,7 @@ export const clearStoredWriteFeedback = (storageKey: string) => {
   try {
     window.sessionStorage.removeItem(storageKey);
   } catch {
-    // It may be disabled in some browser environments sessionStorage。
+    // It may be disabled in some browser environments sessionStorage.
   }
 };
 
@@ -541,6 +541,6 @@ export const storeWriteFeedback = (
     };
     window.sessionStorage.setItem(storageKey, JSON.stringify(feedback));
   } catch {
-    // Feedback retention only improves visibility after refresh，Should not affect the main process of saving。
+    // Feedback retention only improves visibility after refresh, Should not affect the main process of saving.
   }
 };

@@ -90,7 +90,7 @@ export const parseAdminSettingsExportBundle = (
   const schemaVersion = rawManifest.schemaVersion;
   if (schemaVersion !== ADMIN_SETTINGS_EXPORT_SCHEMA_VERSION) {
     errors.push(
-      `Only supports schemaVersion=${ADMIN_SETTINGS_EXPORT_SCHEMA_VERSION} 的 settings Import package`
+      `Only supports schemaVersion=${ADMIN_SETTINGS_EXPORT_SCHEMA_VERSION}  settings Import package`
     );
   }
 
@@ -121,7 +121,7 @@ export const parseAdminSettingsExportBundle = (
     && rawLocale !== undefined
     && typeof rawLocale !== 'string'
   ) {
-    errors.push('manifest.locale Must be a string、null，Or it is directly missing in the old export package');
+    errors.push('manifest.locale Must be a string, null, Or it is directly missing in the old export package');
   }
 
   if (errors.length > 0) {

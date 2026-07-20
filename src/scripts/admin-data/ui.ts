@@ -420,7 +420,7 @@ export const createAdminDataUi = ({
     showPreviewEmpty({
       state: 'idle',
       title: 'Waiting for snapshot to be imported',
-      body: 'choose JSON Snapshot and execute dry-run 后，Show preview results here'
+      body: 'choose JSON Snapshot and execute dry-run after, Show preview results here'
     });
   };
 
@@ -444,7 +444,7 @@ export const createAdminDataUi = ({
       previewBodyEl.textContent = options.body ?? '';
       const cleanState = createResultItem(
         'Currently imported snapshot and local settings consistent',
-        'dry-run No group detected for writing，You can continue to retain the current local configuration。'
+        'dry-run No group detected for writing, You can continue to retain the current local configuration.'
       );
       resultListEl.appendChild(
         cleanState.item
@@ -458,7 +458,7 @@ export const createAdminDataUi = ({
     );
     if (options.state === 'diff') {
       previewBodyEl.classList.add('admin-data-terminal__section-body--summary');
-      previewBodyEl.textContent = `${changedGroups.length} groups to be updated，共 ${totalChangedCount} The field will change`;
+      previewBodyEl.textContent = `${changedGroups.length} groups to be updated, total ${totalChangedCount} The field will change`;
     }
 
     const fragment = document.createDocumentFragment();
@@ -516,7 +516,7 @@ export const createAdminDataUi = ({
       },
       {
         label: 'Not included',
-        value: bundle.manifest.excludes.length > 0 ? bundle.manifest.excludes.join(', ') : '（无）',
+        value: bundle.manifest.excludes.length > 0 ? bundle.manifest.excludes.join(', ') : '(none)',
         wide: true
       }
     ];

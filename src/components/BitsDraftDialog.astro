@@ -65,14 +65,14 @@ const { settings } = getThemeSettings();
           Label
         </label>
         <input id="bits-draft-tags" name="tags" type="text" inputmode="text" placeholder="Comma or space separated" />
-        <div class="bits-draft-help">例：Life read / life reading</div>
+        <div class="bits-draft-help">e.g.:Life read / life reading</div>
       </div>
       <div class="bits-draft-field bits-draft-half">
         <label for="bits-draft-place" class="bits-draft-label">
           <span class="bits-draft-label-icon" aria-hidden="true">
             <UiIcon name="map-pin" />
           </span>
-          Place（Optional）
+          Place(Optional)
         </label>
         <input id="bits-draft-place" name="place" type="text" inputmode="text" placeholder="For example:Shanghai" />
         <div class="bits-draft-help">generate tags inside loc:&lt;Place&gt;</div>
@@ -83,7 +83,7 @@ const { settings } = getThemeSettings();
       <div class="bits-draft-field">
         <div class="bits-draft-field-head bits-draft-image-head">
           <div class="bits-draft-field-title">
-            <label>Insert picture（Optional）</label>
+            <label>Insert picture(Optional)</label>
             <button class="bits-draft-image-add" type="button" data-bits-image-add>+ Add to</button>
           </div>
           <div class="bits-draft-help">Automatically read image size</div>
@@ -96,7 +96,7 @@ const { settings } = getThemeSettings();
                 data-bits-image-src
                 type="text"
                 inputmode="url"
-                placeholder="bits/xxx.jpg 或 https://..."
+                placeholder="bits/xxx.jpg or https://..."
               />
               <button class="bits-draft-image-clear" type="button" data-bits-image-remove aria-label="Remove image">x</button>
             </div>
@@ -128,7 +128,7 @@ const { settings } = getThemeSettings();
                 data-bits-image-src
                 type="text"
                 inputmode="url"
-                placeholder="bits/xxx.jpg 或 https://..."
+                placeholder="bits/xxx.jpg or https://..."
               />
               <button class="bits-draft-image-clear" type="button" data-bits-image-remove aria-label="Remove image">x</button>
             </div>
@@ -168,7 +168,7 @@ const { settings } = getThemeSettings();
       </div>
 
       <div class="bits-draft-manual" data-bits-manual hidden>
-        <div class="bits-draft-manual-title">Draft content（read only）</div>
+        <div class="bits-draft-manual-title">Draft content(read only)</div>
         <textarea class="bits-draft-manual-textarea" data-bits-manual-textarea rows="6" readonly></textarea>
         <div class="bits-draft-manual-actions">
           <div class="bits-draft-manual-note" data-bits-manual-note></div>
@@ -181,7 +181,7 @@ const { settings } = getThemeSettings();
           <span class="bits-identity-label-icon" aria-hidden="true">
             <UiIcon name="user-circle" />
           </span>
-          <span id="bits-identity-heading">author（Optional）</span>
+          <span id="bits-identity-heading">author(Optional)</span>
         </div>
         <div class="bits-identity-row">
           <div class="bits-identity-controls">
@@ -223,15 +223,15 @@ const { settings } = getThemeSettings();
           </label>
           <label class="bits-identity-label">
             <span class="bits-identity-label-row">
-              <span class="bits-identity-label-title">avatar path（URL）</span>
-              <span class="bits-identity-label-hint">Leave blank to use default avatar；If loading fails, the first character will be displayed.</span>
+              <span class="bits-identity-label-title">avatar path(URL)</span>
+              <span class="bits-identity-label-hint">Leave blank to use default avatar;If loading fails, the first character will be displayed.</span>
             </span>
             <input type="text" name="authorAvatar" inputmode="url" data-author-avatar />
           </label>
         </div>
         <div class="bits-identity-meta">
           <p class="bits-identity-note">
-            Leave blank to use current author，This article will not be written author
+            Leave blank to use current author, This article will not be written author
           </p>
           <button type="button" class="bits-identity-reset" data-author-reset>Restore default</button>
         </div>

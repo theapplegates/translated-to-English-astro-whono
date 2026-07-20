@@ -32,7 +32,7 @@
     },
     {
       "id": "about",
-      "label": "about",
+      "label": "About",
       "ornament": "·",
       "visible": true,
       "order": 5

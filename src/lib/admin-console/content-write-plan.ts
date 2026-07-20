@@ -233,7 +233,7 @@ export const buildBitsFrontmatterFromValues = (
     issues.push(
       createIssue(
         'authorAvatar',
-        'author.avatar Only relative image paths allowed（For example author/avatar.webp），Don't bring it public/、Don't take / beginning，Also don't use URL、..、?、#'
+        'author.avatar only allows a relative image path (e.g. author/avatar.webp). Do not include public/, do not start with /, and do not use a URL, .., ?, or #'
       )
     );
   }
@@ -467,7 +467,7 @@ const buildEssayWritePlan = async (
     if (missingImageReferences.length > 0) {
       return {
         issues: missingImageReferences.map((reference) =>
-          createIssue('body', `The local image referenced in the text does not exist：${reference.relativePath}`)
+          createIssue('body', `The local image referenced in the text does not exist: ${reference.relativePath}`)
         ),
         changedFields: [],
         patches: []
@@ -550,7 +550,7 @@ const buildMemoWritePlan = (
     if (missingImageReferences.length > 0) {
       return {
         issues: missingImageReferences.map((reference) =>
-          createIssue('body', `The local image referenced in the text does not exist：${reference.relativePath}`)
+          createIssue('body', `The local image referenced in the text does not exist: ${reference.relativePath}`)
         ),
         changedFields: [],
         patches: []
@@ -580,7 +580,7 @@ export const buildAdminContentWritePlanFromState = async (
   if (!getAdminContentCollectionCapability(collection).entryWritable) {
     throw new AdminContentEntryResolutionError(
       'invalid-entry-id',
-      getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet：${collection}`
+      getAdminContentReadOnlyReason(collection) ?? `current collection Writing disk is not supported yet: ${collection}`
     );
   }
 

@@ -278,10 +278,10 @@ export const createFormCodec = ({
     const [primary, secondary] = collectHomeIntroLinks();
     const primaryLabel = getHomeIntroLinkLabel(primary || defaultPrimaryHomeIntroLink);
     if (!secondary) {
-      return `${introText} ${primaryLabel}。`;
+      return `${introText} ${primaryLabel}.`;
     }
     const secondaryLabel = getHomeIntroLinkLabel(secondary);
-    return `${introText} ${primaryLabel} 或 ${secondaryLabel}。`;
+    return `${introText} ${primaryLabel} or ${secondaryLabel}.`;
   };
 
   const refreshHomeIntroPreview = (): void => {
@@ -290,8 +290,8 @@ export const createFormCodec = ({
 
   const ARTICLE_META_PREVIEW_DATE = '2026-03-18';
   const ARTICLE_META_PREVIEW_TAGS = ['#Astro', '#writing'] as const;
-  const ARTICLE_META_PREVIEW_WORD_COUNT = '共 2,416 字';
-  const ARTICLE_META_PREVIEW_READING_TIME = '约 6 minute';
+  const ARTICLE_META_PREVIEW_WORD_COUNT = '2,416 words';
+  const ARTICLE_META_PREVIEW_READING_TIME = 'about 6 minutes';
   const ARTICLE_META_PREVIEW_EMPTY = 'Post meta information is not currently displayed';
 
   const getArticleMetaPreviewText = (): string => {
@@ -366,11 +366,11 @@ export const createFormCodec = ({
       ? `${startYear}-${footerStartYearMax}`
       : String(startYear || footerStartYearMax);
     const copyright = inputSiteFooterCopyright.value.trim() || 'Whono · Theme Demo · by cxro';
-    return `Footer preview：© ${yearRange} ${copyright}`;
+    return `Footer preview: © ${yearRange} ${copyright}`;
   };
 
   const refreshFooterPreview = (): void => {
-    footerPreviewValueEl.textContent = getFooterPreviewText().replace(/^Footer preview：/, '').trim();
+    footerPreviewValueEl.textContent = getFooterPreviewText().replace(/^Footer preview: /, '').trim();
   };
 
   const syncFooterYearControls = (): void => {
