@@ -6,6 +6,21 @@ date: 2026-04-24
 tags: [ "Admin Console", "guide" ]
 draft: false
 ---
+
+
+
+<cloudinary-picture
+  src="assets/images/eugeniya-belova-zGThWNmhK58-unsplash"
+  alt="TODO: describe this image"
+  width="4000"
+  height="6000"
+  devices="1200|40|original,992|60|16:9,768|70|4:3,0|100|1:1"
+  breakpoints="50, 215, 303, 380, 441, 496, 566, 614, 662, 720, 773, 860, 900, 975, 997, 1000"
+  picture-class="responsive-picture"
+/>
+
+
+
 <cloudinary-picture
   src="assets/images/The-Gulfstream-G800.20250416"
   alt="TODO: describe this image"
