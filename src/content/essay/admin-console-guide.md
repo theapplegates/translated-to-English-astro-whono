@@ -6,6 +6,21 @@ date: 2026-04-24
 tags: [ "Admin Console", "guide" ]
 draft: false
 ---
+
+
+
+<cloudinary-picture
+  src="assets/images/lens-by-benji-TVsDtnU4XmU-unsplash"
+  alt="TODO: describe this image"
+  width="3456"
+  height="4608"
+  devices="1200|40|original,992|60|16:9,768|70|4:3,0|100|1:1"
+  breakpoints="50, 255, 378, 387, 561, 634, 698, 761, 817, 869, 925, 977, 999, 1000"
+  picture-class="responsive-picture"
+/>
+
+
+
 <cloudinary-picture
   src="assets/images/The-Gulfstream-G800.20250416"
   alt="TODO: describe this image"
