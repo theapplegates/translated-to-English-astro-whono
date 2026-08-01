@@ -10,21 +10,18 @@ draft: false
 
 
 <cloudinary-picture
-<<<<<<< HEAD
   src="assets/images/eugeniya-belova-zGThWNmhK58-unsplash"
   alt="TODO: describe this image"
   width="4000"
   height="6000"
   devices="1200|40|original,992|60|16:9,768|70|4:3,0|100|1:1"
   breakpoints="50, 215, 303, 380, 441, 496, 566, 614, 662, 720, 773, 860, 900, 975, 997, 1000"
-=======
   src="assets/images/lens-by-benji-TVsDtnU4XmU-unsplash"
   alt="TODO: describe this image"
   width="3456"
   height="4608"
   devices="1200|40|original,992|60|16:9,768|70|4:3,0|100|1:1"
   breakpoints="50, 255, 378, 387, 561, 634, 698, 761, 817, 869, 925, 977, 999, 1000"
->>>>>>> main
   picture-class="responsive-picture"
 />
 
